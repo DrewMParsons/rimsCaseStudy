@@ -20,8 +20,12 @@ public class MenuItemService
 		menuItemRepo.save(menuItem);
 	}
 	
-	public List<MenuItem> listAll(){
-		return (List<MenuItem>) menuItemRepo.findAll();
+	public List<MenuItem> listAll(String keyword){
+		if(keyword ==null || keyword.isEmpty() || keyword.equals("")) {
+			return (List<MenuItem>) menuItemRepo.findAll();
+		}
+		
+		return menuItemRepo.search(keyword);
 	}
 	
 	public MenuItem get(Long id) {

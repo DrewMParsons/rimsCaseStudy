@@ -26,7 +26,7 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 		
-<title>Menu Items</title>
+<title>Order Menu Items</title>
 </head>
 <body>
 <section class="title"> 
@@ -40,57 +40,24 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarToggler">
 				<ul class="navbar-nav ml-auto">
-					<li class=" active nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+					<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
 					<li class="nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
-					<li class="nav-item"><a class="nav-link" href="/order">Order Summary</a></li>
-					<li class="nav-item">
-					<form method="get" action="/menu">
-						<div class="input-group ">
-	      					<input type="text" class="form-control" placeholder="Search.." name="keyword">
-	      					<div class="input-group-append">
-	      					<button class="btn btn-secondary" id="btnSearch" type="submit" value="Search"><i class="fa fa-search"></i></button>
-	      					<button class="btn btn-secondary" id="btnClear" type="reset" ><i class="fas fa-times-circle"></i></button>
-	    				</div>
-	    				</div>
-	    				</form>
-    				</li>
-					
-				</ul>
-				
+					<li class="active nav-item"><a class="nav-link" href="/order">Order Items</a></li>
+					<li class="active nav-item"><a class="nav-link" href="#">Order Summary</a></li>
+				</ul>	
 			</div>
 		</nav> 
 	</section>
-
-<!-- <div class="topnav"> -->
-<%--  		<a href="${pageContext.request.contextPath}/">Home</a> --%>
-<%--  		<a class="active" href="${pageContext.request.contextPath}/menu">Menu</a> --%>
-<!--     	<a href="#">Order Summary</a> -->
-<!--     	<a href="menu/new">New Item</a> -->
-<!--     	<div class="search-container"> -->
-<!--     		<form method="get" action="/menu"> -->
-<!--       			<input type="text" placeholder="Search.." name="keyword"> -->
-<!--       			<button id="btnSearch" type="submit" value="Search"><i class="fa fa-search"></i></button> -->
-<!--       			&nbsp; -->
-<!--     			<button id="btnClear" type="reset" ><i class="fas fa-times-circle"></i></button> -->
-<!--     		</form> -->
-<!--   		</div> -->
-<!-- 	</div> -->
+	
 <section id="table">	
 <div align="center">
     
     
-<!--     <form method="get" action="customer/search"> -->
-<!--         <input type="text" name="keyword" /> &nbsp; -->
-<!--         <input type="submit" value="Search" /> -->
-<!--     </form> -->
-    
     <table class= "table table-striped table-hover" >
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
             <th scope="col">Description</th>
             <th scope="col">Actions</th>
         </tr>
@@ -98,10 +65,8 @@
         <tbody>
         <c:forEach items="${listMenuItems}" var="menuItem">
         <tr>
-            <th scope="row">${menuItem.id}</th>
-            <td>${menuItem.title}</td>
+            <th scope="row">${menuItem.title}</th>
             <td>${menuItem.price}</td>
-            <td>${menuItem.quantity}</td>
             <td>${menuItem.description}</td>
             
             <td>
@@ -115,8 +80,6 @@
         </tbody>
     </table>
   
-    <a href="menu/new" role="button" class="btn btn-outline-light btn-lg"><i
-                            class="bi bi-door-open-fill"></i>New Menu Item</a>
 
 </div>   
 </section>

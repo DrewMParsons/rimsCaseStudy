@@ -1,13 +1,17 @@
 package com.rims.drew.parsons.entity;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="menu_item")
 public class MenuItem
 {
 	@Id
@@ -16,19 +20,18 @@ public class MenuItem
 	private String title;
 	private BigDecimal price;
 	private String description;
+	private int quantity;
+	
+	@OneToMany(mappedBy="menuItem")
+	private Set<OrderItem> orderItems;
+	
 	
 	public MenuItem()
 	{
 		super();
 	}
 
-	public MenuItem(String title, BigDecimal price, String description)
-	{
-		super();
-		this.title = title;
-		this.price = price;
-		this.description = description;
-	}
+	
 
 	public Long getId()
 	{
@@ -70,6 +73,31 @@ public class MenuItem
 		this.description = description;
 	}
 
+	public int getQuantity()
+	{
+		return quantity;
+	}
+
+	public void setQuantity(int quantity)
+	{
+		this.quantity = quantity;
+	}
+	
+
+	public Set<OrderItem> getOrderItems()
+	{
+		return orderItems;
+	}
+
+
+
+	public void setOrderItems(Set<OrderItem> orderItems)
+	{
+		this.orderItems = orderItems;
+	}
+
+
+
 	@Override
 	public int hashCode()
 	{
@@ -78,6 +106,7 @@ public class MenuItem
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + quantity;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -110,6 +139,8 @@ public class MenuItem
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
+		if (quantity != other.quantity)
+			return false;
 		if (title == null)
 		{
 			if (other.title != null)
@@ -118,6 +149,9 @@ public class MenuItem
 			return false;
 		return true;
 	}
+	
+	
+
 	
 	
 	

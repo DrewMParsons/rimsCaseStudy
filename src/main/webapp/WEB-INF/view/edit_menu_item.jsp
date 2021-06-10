@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
     Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,26 +20,55 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" href="css/main.css">
+	
+<link rel="stylesheet" href="/css/main.css">
 
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+		
 <title>Edit Menu Item</title>
 </head>
 <body>
-	<form:form class="form-horizontal" id="newMenuItemForm" action="save" method="post" modelAttribute="menuItem">
+	<section class="title"> 
+	<!-- NAVIGATION BAR --> 
+		<nav class="navbar navbar-expand-lg navbar-dark "> 
+			<a class="navbar-brand" href="/">RIMS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarToggler" aria-controls="navbarToggler"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarToggler">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+					<li class="nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Order Summary</a></li>
+				</ul>
+			</div>
+		</nav> 
+	</section>
+	
+
+	<form:form class="form-horizontal" id="newMenuItemForm" action="save"
+		method="post" modelAttribute="menuItem">
 		<fieldset>
 
 			<!-- Form Name -->
-			<legend>Edit Menu Item</legend>
+			<legend>Edit Item: ${menuItem.title}</legend>
 
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="idfield">ID</label>
 				<div class="col-md-4">
-					<form:input id="idfield" path="id" class="form-control input-md" readonly="true" value="${menuItem.id}" />
+					<form:input id="idfield" path="id" class="form-control input-md"
+						readonly="true" value="${menuItem.id}" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -47,16 +76,24 @@
 				<div class="col-md-4">
 					<form:input id="titleinput" path="title" type="text"
 						placeholder="menu item title" class="form-control input-md" />
-					
+
 				</div>
 			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="priceimput">Price</label>
+				<label class="col-md-4 control-label" for="priceinput">Price</label>
 				<div class="col-md-4">
-					<form:input id="priceimput" path="price" type="text"
-						placeholder="00.00" class="form-control input-md" /> 
+					<form:input id="priceinput" path="price" type="text"
+						placeholder="00.00" class="form-control input-md" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="quantityinput">Quantity</label>
+				<div class="col-md-4">
+					<form:input id="priceinput" path="quantity" type="text"
+						placeholder="0" class="form-control input-md" />
 				</div>
 			</div>
 
@@ -64,7 +101,8 @@
 				<label class="col-md-4 control-label" for="descriptioninput">Description</label>
 				<div class="col-md-4">
 					<form:input id="descriptioninput" path="description" type="text"
-						placeholder="brief description of menu item" class="form-control input-md" /> 
+						placeholder="brief description of menu item"
+						class="form-control input-md" />
 				</div>
 			</div>
 
@@ -73,8 +111,9 @@
 				<label class="col-md-4 control-label" for="button1id">Submit</label>
 				<div class="col-md-8">
 					<button id="button1id" name="button1id" class="btn btn-dark"
-						type="submit" value="save">Create</button>
-<!-- 					<button id="button2id" name="button2id" class="btn btn-dark">Cancel</button> -->
+						type="submit" value="save">Save</button>
+					<button type="button" id="button2id" name="button2id"
+						class="btn btn-dark" onclick="window.history.back();">Cancel</button>
 				</div>
 			</div>
 

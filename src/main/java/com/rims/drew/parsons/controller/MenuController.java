@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,18 +23,23 @@ public class MenuController
 	@Autowired
 	private MenuItemService menuItemService;
 	
+	private List<MenuItem> menuItemList;
+	
 	@RequestMapping
-	public ModelAndView home() {
-		List<MenuItem> menuItemsList = menuItemService.listAll();
-		ModelAndView mav = new ModelAndView("menu_index");
-		mav.addObject("listMenuItems",menuItemsList);
-		return mav;
+	public String home(Model model,@Param("keyword")String keyword) {
+		menuItemList = menuItemService.listAll(keyword);
+		model.addAttribute("listMenuItems",menuItemList);
+		model.addAttribute("keyword",keyword);
+	
+		
+		return "menu_index";
 	}
 	
 	@RequestMapping("/new")
-	public String newMenuItem(Map<String,Object> model) {
+	public String newMenuItem(Model model, Map<String,Object> mapModel) {
 		MenuItem menuItem = new MenuItem();
-		model.put("menuItem",menuItem);
+		model.addAttribute("menuItem",menuItem);
+		//mapModel.put("menuItem",menuItem);
 		return "new_menu_item";
 	}
 	
@@ -58,11 +65,11 @@ public class MenuController
 	
 	@RequestMapping("/search")
     public ModelAndView search(@RequestParam String keyword) {
-		List<MenuItem> result = menuItemService.search(keyword);
-		ModelAndView mav = new ModelAndView("search");
-        mav.addObject("result", result);
-     
-        return mav;    
+		menuItemList = menuItemService.search(keyword);
+	
+		ModelAndView mav = new ModelAndView("menu_index");
+		mav.addObject("listMenuItems",menuItemList);
+		return mav; 
     }
 	
 

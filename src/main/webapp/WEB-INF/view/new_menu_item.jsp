@@ -20,7 +20,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" href="css/main.css">
+	
+<link rel="stylesheet" href="/css/main.css">
 
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
@@ -29,6 +30,25 @@
 <title>New Menu Item</title>
 </head>
 <body>
+	<section class="title"> 
+		<!-- NAVIGATION BAR --> 
+			<nav class="navbar navbar-expand-lg navbar-dark "> 
+				<a class="navbar-brand" href="/">RIMS</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarToggler" aria-controls="navbarToggler"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarToggler">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+						<li class="active nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Order Summary</a></li>
+					</ul>
+				</div>
+			</nav> 
+		</section>
+	
 	<form:form class="form-horizontal" id="newMenuItemForm" action="save" method="post" modelAttribute="menuItem">
 		<fieldset>
 
@@ -52,6 +72,13 @@
 					<form:input id="priceimput" path="price" type="text"
 						placeholder="00.00" class="form-control input-md" /> <span
 						class="help-block">help</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="quantityinput">Quantity</label>
+				<div class="col-md-4">
+					<form:input id="priceinput" path="quantity" type="text"
+						placeholder="0" class="form-control input-md" />
 				</div>
 			</div>
 
