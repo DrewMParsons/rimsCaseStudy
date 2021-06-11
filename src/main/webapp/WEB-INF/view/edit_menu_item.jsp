@@ -89,13 +89,6 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="quantityinput">Quantity</label>
-				<div class="col-md-4">
-					<form:input id="priceinput" path="quantity" type="text"
-						placeholder="0" class="form-control input-md" />
-				</div>
-			</div>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="descriptioninput">Description</label>

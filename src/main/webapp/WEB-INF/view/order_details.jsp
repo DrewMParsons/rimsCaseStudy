@@ -26,7 +26,7 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 		
-<title>Order Menu Items</title>
+<title>Order Details</title>
 </head>
 <body>
 <section class="title"> 
@@ -42,44 +42,19 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
 					<li class="nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
-					<li class="active nav-item"><a class="nav-link" href="/order">Order Items</a></li>
-					<li class="nav-item"><a class="nav-link" href="/order/orderdetails">Order Summary</a></li>
+					<li class="nav-item"><a class="nav-link" href="/order/orderdetail">Order Items</a></li>
+					<li class="active nav-item"><a class="nav-link" href="#">Order Summary</a></li>
 				</ul>	
 			</div>
 		</nav> 
 	</section>
 	
-<section id="table">	
-<div align="center">
+<section id="hero">	
+<div>
+<h2>Order Details:</h2>
     
     
-    <table class= "table table-striped table-hover" >
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
-            <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${listMenuItems}" var="menuItem">
-        <tr>
-            <th scope="row">${menuItem.title}</th>
-            <td>${menuItem.price}</td>
-            <td>${menuItem.description}</td>
-            
-            <td>
-            <a class="btn btn-info" role="button" href="#"><i class="fas fa-edit"></i></a>
-         	<a class="btn btn-info" role="button" href="/order/orderdetails"><i class="far fa-eye"></i></a>
-            <a class="btn btn-info" role="button" href="#"><i class="far fa-trash-alt"></i></a>
-             
-            </td>
-        </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-  
+   
 
 </div>   
 </section>

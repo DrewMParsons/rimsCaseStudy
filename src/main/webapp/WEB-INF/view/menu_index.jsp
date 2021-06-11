@@ -42,7 +42,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class=" active nav-item"><a class="nav-link" href="/menu">Menu</a></li>
 					<li class="nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
-					<li class="nav-item"><a class="nav-link" href="/order">Order Summary</a></li>
+					<li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
 					<li class="nav-item">
 					<form method="get" action="/menu">
 						<div class="input-group ">
@@ -90,7 +90,6 @@
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
             <th scope="col">Description</th>
             <th scope="col">Actions</th>
         </tr>
@@ -101,7 +100,6 @@
             <th scope="row">${menuItem.id}</th>
             <td>${menuItem.title}</td>
             <td>${menuItem.price}</td>
-            <td>${menuItem.quantity}</td>
             <td>${menuItem.description}</td>
             
             <td>

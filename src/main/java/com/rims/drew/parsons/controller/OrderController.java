@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rims.drew.parsons.entity.MenuItem;
-
+import com.rims.drew.parsons.entity.OrderItem;
+import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.service.MenuItemService;
 import com.rims.drew.parsons.service.OrderItemService;
+import com.rims.drew.parsons.service.UserService;
 
 @Controller
 @RequestMapping("/order")
@@ -22,12 +24,15 @@ public class OrderController
 	private MenuItemService menuItemService;
 	
 	@Autowired
-	private OrderItemService orderService;
+	private UserService userService;
+	
+	@Autowired
+	private OrderItemService orderItemService;
 	
 	
 	
-	@GetMapping()
-	public String home(Model model,Map<String,Object> mapModel)
+	@RequestMapping()
+	public String order(Model model,Map<String,Object> mapModel)
 	{
 		
 		List<MenuItem> menuItemList= menuItemService.listAll(null);
@@ -35,6 +40,17 @@ public class OrderController
 		model.addAttribute("listMenuItems",menuItemList);
 		
 		return "order";
+	}
+	
+	//TODO: add auth to only allow logged in user to view page
+	//TODO: GET RID OF HARDWIRED USER
+	@RequestMapping("/orderdetails")
+	public String orderDetails(Model model) {
+		
+		User user = userService.findById(1L);
+		List<OrderItem> orderItems = orderItemService.listOrderItems(user);
+		model.addAttribute("listOrderItems", orderItems);
+		return "order_details";
 	}
 
 }
