@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 
@@ -28,8 +27,8 @@ public class User
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany
-    private Set<Role> roles;
+    
+    private Role role;
 
 	public Long getId()
 	{
@@ -101,14 +100,14 @@ public class User
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	public Set<Role> getRoles()
+	public Role getRole()
 	{
-		return roles;
+		return role;
 	}
 
-	public void setRoles(Set<Role> roles)
+	public void setRole(Role role)
 	{
-		this.roles = roles;
+		this.role = role;
 	}
     
     
