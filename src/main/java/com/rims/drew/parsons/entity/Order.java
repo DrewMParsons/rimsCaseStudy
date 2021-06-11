@@ -20,8 +20,8 @@ public class Order
 	private Long user;
 	private BigDecimal totalPrice;
 	
-	@OneToMany(mappedBy="order")
-	private Set<OrderItem> orderItems;
+//	@OneToMany(mappedBy="order")
+//	private Set<OrderItem> orderItems;
 	
 	
 	public Order()
@@ -29,17 +29,6 @@ public class Order
 		super();
 	}
 	
-	
-
-	public Order(Long id, Long user, BigDecimal total, Set<OrderItem> orderItems)
-	{
-		super();
-		this.id = id;
-		this.user = user;
-		this.totalPrice = total;
-		this.orderItems = orderItems;
-	}
-
 
 	public Long getId()
 	{
@@ -72,15 +61,15 @@ public class Order
 		this.totalPrice = total;
 	}
 	
-	public Set<OrderItem> getOrderItems()
-	{
-		return orderItems;
-	}
-
-	public void setOrderItems(Set<OrderItem> orderItems)
-	{
-		this.orderItems = orderItems;
-	}
+//	public Set<OrderItem> getOrderItems()
+//	{
+//		return orderItems;
+//	}
+//
+//	public void setOrderItems(Set<OrderItem> orderItems)
+//	{
+//		this.orderItems = orderItems;
+//	}
 	
 	
 

@@ -21,8 +21,8 @@ public class OrderItem
 	MenuItem menuItem;
 	
 	@ManyToOne
-	@JoinColumn(name = "order_id")
-	Order order;
+	@JoinColumn(name = "user_id")
+	User user;
 	
 	int quantity;
 
@@ -31,15 +31,7 @@ public class OrderItem
 		super();
 	}
 
-	public OrderItem(Long id, MenuItem menuItem, Order order, int quantity)
-	{
-		super();
-		this.id = id;
-		this.menuItem = menuItem;
-		this.order = order;
-		this.quantity = quantity;
-	}
-
+	
 	public Long getId()
 	{
 		return id;
@@ -60,15 +52,19 @@ public class OrderItem
 		this.menuItem = menuItem;
 	}
 
-	public Order getOrder()
+	
+
+	public User getUser()
 	{
-		return order;
+		return user;
 	}
 
-	public void setOrder(Order order)
+
+	public void setUser(User user)
 	{
-		this.order = order;
+		this.user = user;
 	}
+
 
 	public int getQuantity()
 	{
