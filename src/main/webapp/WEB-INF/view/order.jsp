@@ -29,6 +29,7 @@
 <title>Order Menu Items</title>
 </head>
 <body>
+
 <section class="title"> 
 	<!-- NAVIGATION BAR --> 
 		<nav class="navbar navbar-expand-lg navbar-dark "> 
@@ -83,6 +84,7 @@
 
 </div>   
 </section>
+
  <!-- Footer -->
     <div id="footer">
         <i class="social-icon bi bi-twitter"></i>

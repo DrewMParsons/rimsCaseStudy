@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -42,23 +42,57 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
 					<li class="nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
-					<li class="nav-item"><a class="nav-link" href="/order/orderdetail">Order Items</a></li>
-					<li class="active nav-item"><a class="nav-link" href="#">Order Summary</a></li>
+					<li class="nav-item"><a class="nav-link" href="/order">Order Items</a></li>
+					<li class="active nav-item"><a class="nav-link" href="/order/orderdetails">Order Summary</a></li>
 				</ul>	
 			</div>
 		</nav> 
 	</section>
 	
 <section id="hero">	
-<div>
-<h2>Order Details:</h2>
-    
-    
-   
-
-</div>   
+	<div>
+		<h2>Order Details:</h2>
+	 	<br/>
+	</div>   
+	
+	<div class="row m-1">
+		<div class="col-sm-8">
+			<c:forEach items = "${listOrderItems}" var="orderItem">
+				<div class="row border rounded">
+					<div class="col-2">
+						<div>${orderItem.id}</div>
+						<div><a class="btn btn-info" role="button" href="#"><i class="fas fa-trash"></i></a></div>
+					</div>
+					<div class = "col-6">
+						<div>
+							${orderItem.menuItem.title}
+						</div>
+						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div>
+						<div>
+							<span class="h4"> Subtotal</h2></span><span>=</span>
+							<span>$${orderItem.menuItem.price}</span>
+						</div>
+					</div>
+				</div>
+				<div class="row m-1">&#160;</div>
+			</c:forEach>
+		</div>
+		<div class="col-sm-4">
+			<div>
+				<span class="h3">Sub Total:</span>
+			</div>
+			<div class="mt-2">
+				<span class="h2">[Total Amount]</span>
+			</div>
+			<div class="mt-2">
+				<a href="order/orderComplete" role="button" class="btn btn-dark btn-lg"><i
+                            class="bi bi-cart-check-fill"></i>Order Now</a>
+			</div>
+		</div>
+	</div>
 </section>
  <!-- Footer -->
+ <!--TODO:Footer IS NOT RESPONSIVE, TOO BIG, CUTS OFF BOTTOM OF SECTION IN SMALL SCREEN  --> 
     <div id="footer">
         <i class="social-icon bi bi-twitter"></i>
         <i class="social-icon bi bi-facebook"></i>
