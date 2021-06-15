@@ -67,9 +67,9 @@
 
 			<!-- Text input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="priceimput">Price</label>
+				<label class="col-md-4 control-label" for="priceinput">Price</label>
 				<div class="col-md-4">
-					<form:input id="priceimput" path="price" type="text"
+					<form:input id="priceinput" path="price" type="text"
 						placeholder="00.00" class="form-control input-md" /> <span
 						class="help-block">help</span>
 				</div>

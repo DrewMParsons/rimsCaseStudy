@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
     Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -72,19 +73,22 @@
             
             <td>
             <div>
+            	<form:form class="form-horizontal" id="addMenuItemToOrder" action="order/add" method="post" modelAttribute="orderItem">
 							<nav>
 								<ul class= "pagination">
 									<li class="page-item">
 										<a data-value="${menuItem.id}" class="page-link minusButton" href=""><b>-</b></a>
 									</li>
 									<li class="page-item">
-										<input id="quantity${menuItem.id}"type="text" style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${orderItem.quantity}" />
+										<form:hidden id="menuItem" path="menuItem" value="${menuItem.id}"/>
+										<form:input id="quantity${menuItem.id}" path="quantity" type="text" style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${quantity}" />
 									</li>
+									
 									<li class="page-item">
 										<a data-value="${menuItem.id}"class="page-link plusButton" href=""><b>+</b></a>
 									</li>	
 									<li class="page-item">
-										<a class="btn btn-info" title="ADD TO CART" role="button" href="#"><i class="fas fa-eye"></i></a>
+										<button class="btn btn-info" title="ADD TO CART" type="submit" method="POST" value="add"><i class="fas fa-eye"></i></button>
 									</li>
 									<li class="page-item">
 										<a class="btn btn-info" title="VIEW CART" role="button" href="/order/orderdetails"><i class="fas fa-shopping-cart"></i></a>
@@ -94,6 +98,7 @@
 									</li>
 								</ul>
 							</nav>
+							</form:form>
 						</div> 
             </td>
         </tr>

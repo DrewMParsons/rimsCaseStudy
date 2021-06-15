@@ -5,33 +5,61 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.entity.OrderItem;
 import com.rims.drew.parsons.entity.User;
+import com.rims.drew.parsons.repository.MenuItemRepository;
 import com.rims.drew.parsons.repository.OrderItemRepository;
 
 @Service
 public class OrderItemService
 {
 	@Autowired
-	OrderItemRepository repo;
+	OrderItemRepository orderRepo;
+	
+	@Autowired
+	MenuItemRepository menuItemRepo;
 	
 	public void save(OrderItem orderItem) {
-		repo.save(orderItem);
+		orderRepo.save(orderItem);
 	}
 	public List<OrderItem> listOrderItems(User user){
-		return (List<OrderItem>) repo.findByUser(user);
+		return (List<OrderItem>) orderRepo.findByUser(user);
 	}
 	
 	public List<OrderItem> listAll(){
-		return (List<OrderItem>) repo.findAll();
+		return (List<OrderItem>) orderRepo.findAll();
 	}
 	
 	public OrderItem get(Long id) {
-		return repo.findById(id).get();
+		return orderRepo.findById(id).get();
 	}
 	
 	public void delete(Long id) {
-		repo.deleteById(id);
+		orderRepo.deleteById(id);
+	}
+	
+	public Integer addMenuItem(Long menuItemId,Integer quantity, User user) {
+		Integer addedQuantity = quantity;
+		MenuItem menuItem = menuItemRepo.findById(menuItemId).get();
+		
+		OrderItem orderItem = orderRepo.findByUserAndMenuItem(user, menuItem);
+		
+		//check if item was already added to the cart.
+		//If yes, update quantity to add additional order
+		if(orderItem !=null) {
+			addedQuantity = orderItem.getQuantity()+quantity;
+			orderItem.setQuantity(addedQuantity);	
+		}else {
+			//update order item with values
+			orderItem = new OrderItem();
+			orderItem.setQuantity(quantity);
+			orderItem.setUser(user);
+			orderItem.setMenuItem(menuItem);
+		}
+		orderRepo.save(orderItem);
+		
+		return addedQuantity;
 	}
 
 }
