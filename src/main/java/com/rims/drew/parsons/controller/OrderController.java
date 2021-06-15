@@ -33,12 +33,14 @@ public class OrderController
 	
 	
 	@RequestMapping()
-	public String order(Model model,Map<String,Object> mapModel)
+	public String order(Model model)
 	{
-		
+		OrderItem orderItem = new OrderItem();
 		List<MenuItem> menuItemList= menuItemService.listAll(null);
+		orderItemService.save(orderItem);
 		
 		model.addAttribute("listMenuItems",menuItemList);
+		model.addAttribute("orderItem",orderItem);
 		
 		return "order";
 	}

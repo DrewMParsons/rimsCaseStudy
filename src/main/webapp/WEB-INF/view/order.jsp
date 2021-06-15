@@ -71,10 +71,30 @@
             <td>${menuItem.description}</td>
             
             <td>
-            <a class="btn btn-info" role="button" href="#"><i class="fas fa-edit"></i></a>
-         	<a class="btn btn-info" role="button" href="/order/orderdetails"><i class="far fa-eye"></i></a>
-            <a class="btn btn-info" role="button" href="#"><i class="far fa-trash-alt"></i></a>
-             
+            <div>
+							<nav>
+								<ul class= "pagination">
+									<li class="page-item">
+										<a data-value="${menuItem.id}" class="page-link minusButton" href=""><b>-</b></a>
+									</li>
+									<li class="page-item">
+										<input id="quantity${menuItem.id}"type="text" style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${orderItem.quantity}" />
+									</li>
+									<li class="page-item">
+										<a data-value="${menuItem.id}"class="page-link plusButton" href=""><b>+</b></a>
+									</li>	
+									<li class="page-item">
+										<a class="btn btn-info" title="ADD TO CART" role="button" href="#"><i class="fas fa-eye"></i></a>
+									</li>
+									<li class="page-item">
+										<a class="btn btn-info" title="VIEW CART" role="button" href="/order/orderdetails"><i class="fas fa-shopping-cart"></i></a>
+									</li>
+									<li class="page-item">
+										<a class="btn btn-info" role="button" href="#"><i class="far fa-trash-alt"></i></a>
+									</li>
+								</ul>
+							</nav>
+						</div> 
             </td>
         </tr>
         </c:forEach>
@@ -93,6 +113,6 @@
         <i class="social-icon bi bi-envelope"></i>
         <p><span>&#169;</span> Copyright 2021 LumpysLounge</p>
     </div>
-    
+    <script src="/js/quantity_button.js"></script>
 </body>
 </html>
