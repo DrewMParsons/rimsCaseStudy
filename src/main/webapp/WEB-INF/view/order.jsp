@@ -109,6 +109,21 @@
 
 </div>   
 </section>
+<div class="alert alert-sucess fade show" id="success-alert" display="inline-block">
+  <h4 class="alert-heading">Item Added!</h4>
+  <strong>${success}</strong> 
+</div>
+
+
+<script type="text/javascript">
+setTimeout(function () {
+
+    // Closing the alert
+    $('.alert').alert('close');
+}, 3000);
+</script>
+
+
 
  <!-- Footer -->
     <div id="footer">

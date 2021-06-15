@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.entity.OrderItem;
@@ -52,12 +53,13 @@ public class OrderController
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addMenuItemToOrder(@ModelAttribute("orderItem")OrderItem orderItem) {
+	public String addMenuItemToOrder(@ModelAttribute("orderItem")OrderItem orderItem, RedirectAttributes redirectAttributes) {
 		
 		User user = userService.findById(1L);
 		Integer addQuantity = orderItemService.addMenuItem(orderItem.getMenuItem().getId(), 1, user);
-		
+		redirectAttributes.addFlashAttribute("success", addQuantity + " " + orderItem.getMenuItem().getTitle() + " added to order");
 		return "redirect:/order";
+		
 	
 	}
 	
