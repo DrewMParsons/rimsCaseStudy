@@ -26,7 +26,7 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 		
-<title>Order Details</title>
+<title>Order Complete</title>
 </head>
 <body>
 <section class="title"> 
@@ -61,33 +61,16 @@
 				<div class="row border rounded">
 					<div class="col-2">
 						<div>${orderItem.id}</div>
-						<div><a class="delete-item btn btn-info" role="button" href="/order/delete?id=${orderItem.id}"><i class="fas fa-trash"></i></a></div>
-						
+						<div><a class="btn btn-info" role="button" href="#"><i class="fas fa-trash"></i></a></div>
 					</div>
 					<div class = "col-6">
 						<div>
 							${orderItem.menuItem.title}
 						</div>
-						<div>
-							<nav>
-								<ul class= "pagination">
-									<li class="page-item">
-										<a class="page-link minusButton" href=""><b>-</b></a>
-									</li>
-									<li class="page-item">
-										<input id="${orderItem.id}"type="text" style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${orderItem.quantity}" />
-									</li>
-									<li class="page-item">
-										<a class="page-link plusButton" href=""><b>+</b></a>
-									</li>
-									
-								</ul>
-							</nav>
-						</div>
-<%-- 						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div> --%>
+						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div>
 						<div>
 							<span class="h4">Subtotal</span><span>=</span>
-							<span>$${orderItem.menuItem.price * orderItem.quantity}</span>
+							<span>$${orderItem.menuItem.price}</span>
 						</div>
 					</div>
 				</div>
@@ -96,13 +79,13 @@
 		</div>
 		<div class="col-sm-4">
 			<div>
-				<span class="h3">Sub Total: $${orderItem.menuItem.price * orderItem.quantity}</span>
+				<span class="h3">Sub Total:</span>
 			</div>
 			<div class="mt-2">
 				<span class="h2">[Total Amount]</span>
 			</div>
 			<div class="mt-2">
-				<a href="order/order_complete" role="button" class="btn btn-dark btn-lg"><i
+				<a href="order/orderComplete" role="button" class="btn btn-dark btn-lg"><i
                             class="bi bi-cart-check-fill"></i>Order Now</a>
 			</div>
 		</div>
@@ -117,6 +100,6 @@
         <i class="social-icon bi bi-envelope"></i>
         <p><span>&#169;</span> Copyright 2021 LumpysLounge</p>
     </div>
-<!--     <script src="/js/quantity_button.js"></script> -->
+    
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.entity.OrderItem;
@@ -51,6 +52,13 @@ public class OrderController
 		List<OrderItem> orderItems = orderItemService.listOrderItems(user);
 		model.addAttribute("listOrderItems", orderItems);
 		return "order_details";
+	}
+	
+	@RequestMapping("/delete")
+	public String deleteOrderItem(@RequestParam long id) {
+		
+		orderItemService.delete(id);
+		return "redirect:/order/orderdetails";
 	}
 
 }
