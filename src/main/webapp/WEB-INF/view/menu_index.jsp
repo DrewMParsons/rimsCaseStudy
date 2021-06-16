@@ -61,28 +61,9 @@
 		</nav> 
 	</section>
 
-<!-- <div class="topnav"> -->
-<%--  		<a href="${pageContext.request.contextPath}/">Home</a> --%>
-<%--  		<a class="active" href="${pageContext.request.contextPath}/menu">Menu</a> --%>
-<!--     	<a href="#">Order Summary</a> -->
-<!--     	<a href="menu/new">New Item</a> -->
-<!--     	<div class="search-container"> -->
-<!--     		<form method="get" action="/menu"> -->
-<!--       			<input type="text" placeholder="Search.." name="keyword"> -->
-<!--       			<button id="btnSearch" type="submit" value="Search"><i class="fa fa-search"></i></button> -->
-<!--       			&nbsp; -->
-<!--     			<button id="btnClear" type="reset" ><i class="fas fa-times-circle"></i></button> -->
-<!--     		</form> -->
-<!--   		</div> -->
-<!-- 	</div> -->
 <section id="table">	
 <div align="center">
     
-    
-<!--     <form method="get" action="customer/search"> -->
-<!--         <input type="text" name="keyword" /> &nbsp; -->
-<!--         <input type="submit" value="Search" /> -->
-<!--     </form> -->
     
     <table class= "table table-striped table-hover" >
     <thead class="thead-dark">
@@ -104,7 +85,6 @@
             
             <td>
             <a class="btn btn-info" role="button" href="menu/edit?id=${menuItem.id}"><i class="fas fa-edit"></i></a>
-<%--             <a class="btn btn-info" role="button" href="menuItem/order?id=${menuItem.id}"><i class="far fa-eye"></i></a> --%>
             <a class="btn btn-info" role="button" href="menu/delete?id=${menuItem.id}"><i class="far fa-trash-alt"></i></a>
              
             </td>
@@ -113,9 +93,6 @@
         </tbody>
     </table>
   
-    <a href="menu/new" role="button" class="btn btn-outline-light btn-lg"><i
-                            class="bi bi-door-open-fill"></i>New Menu Item</a>
-
 </div>   
 </section>
  <!-- Footer -->
