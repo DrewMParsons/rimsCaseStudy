@@ -86,7 +86,7 @@
 <%-- 						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div> --%>
 						<div>
 							<span class="h4">Subtotal</span><span>=</span>
-							<span>$${orderItem.menuItem.price * orderItem.quantity}</span>
+							<span class="h4 itemSubtotal">${orderItem.menuItem.price * orderItem.quantity}</span>
 						</div>
 					</div>
 				</div>
@@ -95,10 +95,10 @@
 		</div>
 		<div class="col-sm-4">
 			<div>
-				<span class="h3">Sub Total: $${orderItem.menuItem.price * orderItem.quantity}</span>
+				<span class="h3">Sub Total: $ ${orderItem.menuItem.price * orderItem.quantity}</span>
 			</div>
 			<div class="mt-2">
-				<span class="h2">[Total Amount]</span>
+				<span class="h2" >$ </span><span class="h2" id="total"></span>
 			</div>
 			<div class="mt-2">
 				<a href="order/order_complete" role="button" class="btn btn-dark btn-lg"><i
@@ -117,5 +117,6 @@
         <p><span>&#169;</span> Copyright 2021 LumpysLounge</p>
     </div>
     <script src="/js/quantity_button.js"></script>
+    <script src="/js/update_quantity.js"></script>
 </body>
 </html>

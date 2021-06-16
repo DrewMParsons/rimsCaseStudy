@@ -6,9 +6,6 @@ Will not update if: new value from plus is greater than 20 (max amount allowed t
 
 */
 
-
-
-
 $(document).ready(function(){
 	$(".minusButton").on("click",function(event){
 	event.preventDefault();
