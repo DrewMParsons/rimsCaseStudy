@@ -41,15 +41,17 @@ public class OrderItemService
 	
 	public Integer addMenuItem(Long menuItemId,Integer quantity, User user) {
 		Integer addedQuantity = quantity;
+		//if Order quantity is set to Zero, dont add anything to the order and return zero 
+		if(addedQuantity==0 || addedQuantity==null) return 0;
 		MenuItem menuItem = menuItemRepo.findById(menuItemId).get();
 		
 		OrderItem orderItem = orderRepo.findByUserAndMenuItem(user, menuItem);
 		
+		
 		//check if item was already added to the cart.
-		//If yes, update quantity to add additional order
+		//If yes, update quantity to
 		if(orderItem !=null) {
-			addedQuantity = orderItem.getQuantity()+quantity;
-			orderItem.setQuantity(addedQuantity);	
+			orderItem.setQuantity(quantity);	
 		}else {
 			//update order item with values
 			orderItem = new OrderItem();

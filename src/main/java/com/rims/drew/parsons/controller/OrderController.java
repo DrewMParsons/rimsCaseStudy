@@ -51,7 +51,7 @@ public class OrderController
 	public String addMenuItemToOrder(@ModelAttribute("orderItem")OrderItem orderItem, RedirectAttributes redirectAttributes) {
 		
 		User user = userService.findById(1L);
-		Integer addQuantity = orderItemService.addMenuItem(orderItem.getMenuItem().getId(), 1, user);
+		Integer addQuantity = orderItemService.addMenuItem(orderItem.getMenuItem().getId(),orderItem.getQuantity(), user);
 		redirectAttributes.addFlashAttribute("success", addQuantity + " " + orderItem.getMenuItem().getTitle() + " added to order");
 		return "redirect:/order";
 		

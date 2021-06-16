@@ -75,7 +75,7 @@
 										<a data-value="${orderItem.id}" class="page-link minusButton" href=""><b>-</b></a>
 									</li>
 									<li class="page-item">
-										<input id="quantity${orderItem.id}"type="text" style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${orderItem.quantity}" />
+										<input id="quantity${orderItem.id}"type="text"  style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${orderItem.quantity}" />
 									</li>
 									<li class="page-item">
 										<a data-value="${orderItem.id}"class="page-link plusButton" href=""><b>+</b></a>
