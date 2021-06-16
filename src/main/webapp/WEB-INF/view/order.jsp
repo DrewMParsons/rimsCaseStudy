@@ -93,9 +93,7 @@
 									<li class="page-item">
 										<a class="btn btn-info" title="VIEW CART" role="button" href="/order/orderdetails"><i class="fas fa-shopping-cart"></i></a>
 									</li>
-									<li class="page-item">
-										<a class="btn btn-info" role="button" href="#"><i class="far fa-trash-alt"></i></a>
-									</li>
+									
 								</ul>
 							</nav>
 							</form:form>
