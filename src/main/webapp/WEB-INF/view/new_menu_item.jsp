@@ -61,7 +61,7 @@
 				<div class="col-md-4">
 					<form:input id="titleinput" path="title" type="text"
 						placeholder="menu item title" class="form-control input-md" />
-					<span class="help-block">help</span>
+					
 				</div>
 			</div>
 
@@ -70,8 +70,7 @@
 				<label class="col-md-4 control-label" for="priceinput">Price</label>
 				<div class="col-md-4">
 					<form:input id="priceinput" path="price" type="text"
-						placeholder="00.00" class="form-control input-md" /> <span
-						class="help-block">help</span>
+						placeholder="00.00" class="form-control input-md" /> 
 				</div>
 			</div>
 			
@@ -80,8 +79,7 @@
 				<label class="col-md-4 control-label" for="descriptioninput">Description</label>
 				<div class="col-md-4">
 					<form:input id="descriptioninput" path="description" type="text"
-						placeholder="brief description of menu item" class="form-control input-md" /> <span
-						class="help-block">help</span>
+						placeholder="brief description of menu item" class="form-control input-md" /> 
 				</div>
 			</div>
 
