@@ -61,7 +61,7 @@
 		<fieldset>
 
 			<!-- Form Name -->
-			<legend>Edit Item: ${menuItem.title}</legend>
+			<h1>Edit Item: ${menuItem.title}</h1>
 
 			<!-- Text input-->
 			<div class="form-group">

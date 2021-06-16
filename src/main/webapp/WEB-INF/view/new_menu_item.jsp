@@ -52,8 +52,8 @@
 	<form:form class="form-horizontal" id="newMenuItemForm" action="save" method="post" modelAttribute="menuItem">
 		<fieldset>
 
-			<!-- Form Name -->
-			<legend>New Menu Item</legend>
+		
+			<h1>New Menu Item</h1>
 
 			<!-- Text input-->
 			<div class="form-group">
