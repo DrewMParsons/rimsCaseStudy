@@ -85,7 +85,7 @@
 						</div>
 <%-- 						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div> --%>
 						<div>
-							<span class="h4">Subtotal</span><span>=</span>
+							<span class="h4">Subtotal = $</span>
 							<span class="h4 itemSubtotal">${orderItem.menuItem.price * orderItem.quantity}</span>
 						</div>
 					</div>
@@ -95,10 +95,10 @@
 		</div>
 		<div class="col-sm-4">
 			<div>
-				<span class="h3">Sub Total: $ ${orderItem.menuItem.price * orderItem.quantity}</span>
+				<span class="h3">Sub Total: $ </span> <span class="h3" id="total"></span>
 			</div>
 			<div class="mt-2">
-				<span class="h2" >$ </span><span class="h2" id="total"></span>
+				<span class="h3" >Total(+ tax): $ </span><span class="h3" id="totalWithTax"></span>
 			</div>
 			<div class="mt-2">
 				<a href="order/order_complete" role="button" class="btn btn-dark btn-lg"><i
