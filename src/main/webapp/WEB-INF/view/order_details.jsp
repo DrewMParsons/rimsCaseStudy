@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
     Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -51,7 +52,7 @@
 	
 <section id="hero">	
 	<div>
-		<h2>Order Details:</h2>
+		<h1>Order Details:</h1>
 	 	<br/>
 	</div>   
 	
@@ -66,24 +67,13 @@
 					</div>
 					<div class = "col-6">
 						<div>
-							${orderItem.menuItem.title}
+							<span class="h4">${orderItem.menuItem.title}</span>
 						</div>
 						<div>
-							<nav>
-								<ul class= "pagination">
-									<li class="page-item">
-										<a data-value="${orderItem.id}" class="page-link minusButton" href=""><b>-</b></a>
-									</li>
-									<li class="page-item">
-										<input id="quantity${orderItem.id}"type="text"  style="max-width: 50px" onkeydown="return false;" class="form-control text-center" value="${orderItem.quantity}" />
-									</li>
-									<li class="page-item">
-										<a data-value="${orderItem.id}"class="page-link plusButton" href=""><b>+</b></a>
-									</li>	
-								</ul>
-							</nav>
+							<span class="h4">Quantity: </span>
+							<span class="h4">${orderItem.quantity}</span>
 						</div>
-<%-- 						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div> --%>
+						
 						<div>
 							<span class="h4">Subtotal = $</span>
 							<span class="h4 itemSubtotal">${orderItem.menuItem.price * orderItem.quantity}</span>
