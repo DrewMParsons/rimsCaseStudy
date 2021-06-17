@@ -1,7 +1,7 @@
 package com.rims.drew.parsons;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -12,8 +12,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.annotation.Rollback;
-
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.entity.OrderItem;
 import com.rims.drew.parsons.entity.User;
@@ -21,8 +19,7 @@ import com.rims.drew.parsons.repository.OrderItemRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace= Replace.NONE)
-@Rollback(false)
-public class OderItemTest
+public class OrderItemTest
 {
 	@Autowired
 	private OrderItemRepository orderRepo;
@@ -37,7 +34,7 @@ public class OderItemTest
 	 */
 	@Test
 	public void testAddMenuItemToOrder() {
-		MenuItem menuItem = entityManager.find(MenuItem.class, 3L);
+		MenuItem menuItem = entityManager.find(MenuItem.class, 1L);
 		User user = entityManager.find(User.class, 1L);
 		
 		OrderItem orderItem = new OrderItem();
@@ -61,9 +58,23 @@ public class OderItemTest
 		
 		List<OrderItem> orderItems = orderRepo.findByUser(user);
 		
-		int actualAmountOfItemsInDB = 4;
+		int actualAmountOfItemsInDB = 1;
 		//check that length of orderItems == whats currently in the db(2)
 		assertEquals(actualAmountOfItemsInDB,orderItems.size());
+	}
+	
+	/*
+	 * @Test to see if item is deleted from the OrderItem table
+	 */
+	@Test
+	public void testDeleteOrderItemByUser() {
+		User user = entityManager.find(User.class, 1L);
+	
+		List<OrderItem> orderItems = orderRepo.findByUser(user);
+		orderRepo.deleteById(orderItems.get(0).getId());
+		List<OrderItem> orderItemsAfterDelete = orderRepo.findByUser(user);
+		//check if length of lists are not equal after the delete
+		assertNotEquals(orderItems.size(), orderItemsAfterDelete.size());
 	}
 
 }

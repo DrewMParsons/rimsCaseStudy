@@ -44,8 +44,6 @@ public class OrderController
 		List<MenuItem> menuItemList= menuItemService.listAll(null);
 		
 		OrderItem orderItem = new OrderItem();
-		//List<OrderItem> orderItems = orderItemService.listOrderItems(user);
-		//model.addAttribute("listOrderItems", orderItems);
 		model.addAttribute("listMenuItems",menuItemList);
 		model.addAttribute("orderItem",orderItem);
 		model.addAttribute("user",user);
@@ -59,8 +57,6 @@ public class OrderController
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userName =auth.getName();
 		User user = userService.findByUsername(userName);
-		//User user = userService.findById(1L);
-		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Integer addQuantity = orderItemService.addMenuItem(orderItem.getMenuItem().getId(),orderItem.getQuantity(), user);
 		redirectAttributes.addFlashAttribute("success", addQuantity + " " + orderItem.getMenuItem().getTitle() + " added to order");
 		return "redirect:/order";
@@ -68,12 +64,10 @@ public class OrderController
 	
 	}
 	
-	//TODO: add auth to only allow logged in user to view page
-	//TODO: GET RID OF HARDWIRED USER
+	
 	@RequestMapping("/orderdetails")
 	public String orderDetails(Model model) {
 		
-		List<MenuItem> menuItemList= menuItemService.listAll(null);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userName =auth.getName();
 		User user = userService.findByUsername(userName);
@@ -88,6 +82,7 @@ public class OrderController
 		orderItemService.delete(id);
 		return "redirect:/order/orderdetails";
 	}
+	
 	@RequestMapping("/ordercomplete")
 	public String completeOrder() {
 		
