@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.service.MenuItemService;
+import com.rims.drew.parsons.validator.MenuItemValidator;
 
 @Controller
 @RequestMapping("/menu")
@@ -22,6 +25,9 @@ public class MenuController
 {
 	@Autowired
 	private MenuItemService menuItemService;
+	
+	@Autowired
+	private MenuItemValidator menuItemValidator;
 	
 	private List<MenuItem> menuItemList;
 	
@@ -43,8 +49,14 @@ public class MenuController
 		return "new_menu_item";
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveMenuItem(@ModelAttribute("menuItem")MenuItem menuItem) {
+	//@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@PostMapping("new")
+	public String saveMenuItem(@ModelAttribute("menuItem")MenuItem menuItem,BindingResult bindingResult) {
+		menuItemValidator.validate(menuItem, bindingResult);
+		
+		 if (bindingResult.hasErrors()) {
+	            return "new_menu_item";
+	        }
 		menuItemService.save(menuItem);
 		return "redirect:/menu";
 	}

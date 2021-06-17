@@ -1,6 +1,9 @@
 package com.rims.drew.parsons.validator;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -8,7 +11,8 @@ import org.springframework.validation.Validator;
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.service.MenuItemService;
 
-public class MenuItemValidator implements Validator 
+@Component
+public class MenuItemValidator implements Validator
 {
 	@Autowired
 	MenuItemService menuItemService;
@@ -16,7 +20,7 @@ public class MenuItemValidator implements Validator
 	@Override
 	public boolean supports(Class<?> clazz)
 	{
-		
+
 		return MenuItem.class.equals(clazz);
 	}
 
@@ -24,19 +28,27 @@ public class MenuItemValidator implements Validator
 	public void validate(Object target, Errors errors)
 	{
 		MenuItem menuItem = (MenuItem) target;
-		
+
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty");
 		 if (menuItemService.findByTitle(menuItem.getTitle()) != null) {
 	            errors.rejectValue("title", "Duplicate.menuItemForm.title");
 	        }
-		 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "NotEmpty");
-		if(menuItem.getPrice().doubleValue() <=0 || menuItem.getPrice().doubleValue()>1000) {
+		if (menuItem.getPrice() == null || menuItem.getPrice().equals(null))
+		{
 			errors.rejectValue("price", "Size.menuItemForm.price");
 		}
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "NotEmpty");
+
+		if (menuItem.getPrice() != null)
+		{
+			if (menuItem.getPrice().doubleValue() <= 0 || menuItem.getPrice().doubleValue() > 1000)
+			{
+				errors.rejectValue("price", "Size.menuItemForm.price");
+			}
+		}
+
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "NotEmpty");
-		
-		
+
 	}
 
 }
