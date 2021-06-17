@@ -17,11 +17,11 @@ public class OrderItem
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@JoinColumn(name = "menu_item_id")
 	MenuItem menuItem;
 	
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	User user;
 	
