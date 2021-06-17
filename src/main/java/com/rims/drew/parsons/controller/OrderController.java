@@ -2,6 +2,8 @@ package com.rims.drew.parsons.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,14 +37,18 @@ public class OrderController
 	@RequestMapping()
 	public String order(Model model)
 	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userName =auth.getName();
+		User user = userService.findByUsername(userName);
+		
+		List<MenuItem> menuItemList= menuItemService.listAll(null);
 		
 		OrderItem orderItem = new OrderItem();
-		List<MenuItem> menuItemList= menuItemService.listAll(null);
-		User user = userService.findById(1L);
-		List<OrderItem> orderItems = orderItemService.listOrderItems(user);
-		model.addAttribute("listOrderItems", orderItems);
+		//List<OrderItem> orderItems = orderItemService.listOrderItems(user);
+		//model.addAttribute("listOrderItems", orderItems);
 		model.addAttribute("listMenuItems",menuItemList);
 		model.addAttribute("orderItem",orderItem);
+		model.addAttribute("user",user);
 		
 		return "order";
 	}
@@ -50,7 +56,11 @@ public class OrderController
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addMenuItemToOrder(@ModelAttribute("orderItem")OrderItem orderItem, RedirectAttributes redirectAttributes) {
 		
-		User user = userService.findById(1L);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userName =auth.getName();
+		User user = userService.findByUsername(userName);
+		//User user = userService.findById(1L);
+		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Integer addQuantity = orderItemService.addMenuItem(orderItem.getMenuItem().getId(),orderItem.getQuantity(), user);
 		redirectAttributes.addFlashAttribute("success", addQuantity + " " + orderItem.getMenuItem().getTitle() + " added to order");
 		return "redirect:/order";
@@ -63,7 +73,10 @@ public class OrderController
 	@RequestMapping("/orderdetails")
 	public String orderDetails(Model model) {
 		
-		User user = userService.findById(1L);
+		List<MenuItem> menuItemList= menuItemService.listAll(null);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userName =auth.getName();
+		User user = userService.findByUsername(userName);
 		List<OrderItem> orderItems = orderItemService.listOrderItems(user);
 		model.addAttribute("listOrderItems", orderItems);
 		return "order_details";
@@ -74,6 +87,11 @@ public class OrderController
 		
 		orderItemService.delete(id);
 		return "redirect:/order/orderdetails";
+	}
+	@RequestMapping("/ordercomplete")
+	public String completeOrder() {
+		
+		return "order_complete";
 	}
 
 }

@@ -91,7 +91,7 @@
 				<span class="h3" >Total(+ tax): $ </span><span class="h3" id="totalWithTax"></span>
 			</div>
 			<div class="mt-2">
-				<a href="order/order_complete" role="button" class="btn btn-dark btn-lg"><i
+				<a href="/order/ordercomplete" role="button" class="btn btn-dark btn-lg"><i
                             class="bi bi-cart-check-fill"></i>Order Now</a>
 			</div>
 		</div>

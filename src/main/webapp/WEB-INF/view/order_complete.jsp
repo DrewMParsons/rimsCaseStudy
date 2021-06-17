@@ -51,44 +51,8 @@
 	
 <section id="hero">	
 	<div>
-		<h2>Order Details:</h2>
-	 	<br/>
-	</div>   
+		<h2>Order Complete!</h2>
 	
-	<div class="row m-1">
-		<div class="col-sm-8">
-			<c:forEach items = "${listOrderItems}" var="orderItem">
-				<div class="row border rounded">
-					<div class="col-2">
-						<div>${orderItem.id}</div>
-						<div><a class="btn btn-info" role="button" href="#"><i class="fas fa-trash"></i></a></div>
-					</div>
-					<div class = "col-6">
-						<div>
-							${orderItem.menuItem.title}
-						</div>
-						<div><input type="number" value="${orderItem.quantity}" class="form-control" /></div>
-						<div>
-							<span class="h4">Subtotal</span><span>=</span>
-							<span>$${orderItem.menuItem.price}</span>
-						</div>
-					</div>
-				</div>
-				<div class="row m-1">&#160;</div>
-			</c:forEach>
-		</div>
-		<div class="col-sm-4">
-			<div>
-				<span class="h3">Sub Total:</span>
-			</div>
-			<div class="mt-2">
-				<span class="h2">[Total Amount]</span>
-			</div>
-			<div class="mt-2">
-				<a href="order/orderComplete" role="button" class="btn btn-dark btn-lg"><i
-                            class="bi bi-cart-check-fill"></i>Order Now</a>
-			</div>
-		</div>
 	</div>
 </section>
  <!-- Footer -->

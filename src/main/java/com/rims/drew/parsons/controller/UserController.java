@@ -33,7 +33,7 @@ public class UserController
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken))
-            return "order";
+            return "redirect:/order";
 		return "index";
 	}
 	

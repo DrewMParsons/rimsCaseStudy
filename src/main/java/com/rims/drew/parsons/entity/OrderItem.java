@@ -1,5 +1,6 @@
 package com.rims.drew.parsons.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,11 +17,11 @@ public class OrderItem
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name = "menu_item_id")
 	MenuItem menuItem;
 	
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name = "user_id")
 	User user;
 	
