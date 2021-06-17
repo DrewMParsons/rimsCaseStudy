@@ -42,4 +42,10 @@ public class MenuItemService
 		return menuItemRepo.search(keyword);
 	}
 
+	public MenuItem findByTitle(String title)
+	{
+		// TODO Auto-generated method stub
+		return menuItemRepo.findByTitle(title);
+	}
+
 }

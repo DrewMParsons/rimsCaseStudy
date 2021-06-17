@@ -16,4 +16,6 @@ public interface MenuItemRepository extends CrudRepository<MenuItem, Long>
 			+ "OR m.description LIKE '%' || :keyword || '%'")
 	List<MenuItem> search(String keyword);
 
+	MenuItem findByTitle(String title);
+
 }
