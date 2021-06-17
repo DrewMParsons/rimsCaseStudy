@@ -1,16 +1,21 @@
 package com.rims.drew.parsons.entity;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 
 
+
+
 @Entity
+@Table(name = "user")
 public class User
 {
 	@Id
@@ -27,9 +32,8 @@ public class User
     @Transient
     private String passwordConfirm;
 
-    @ManyToOne()
-    @JoinColumn(name="role_id",referencedColumnName="id",nullable=false)
-    private Role role;
+    @ManyToMany
+    private Set<Role> roles;
 
 	public Long getId()
 	{
@@ -101,15 +105,13 @@ public class User
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	public Role getRole()
-	{
-		return role;
-	}
+	public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public void setRole(Role role)
-	{
-		this.role = role;
-	}
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
     
     
     

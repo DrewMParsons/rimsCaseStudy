@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +55,24 @@
                 </div>
             </nav>
         </section>
-    <form class="form-horizontal">
+        <div class="container">
+      <form method="POST" action="${contextPath}/login" class="form-signin">
+        <h2 class="form-heading">Log in</h2>
+
+        <div class="form-group ${error != null ? 'has-error' : ''}">
+            <span>${message}</span>
+            <input name="username" type="text" class="form-control" placeholder="Username"
+                   autofocus="true"/>
+            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            <span>${error}</span>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+        </div>
+      </form>
+    </div>
+    <form class="form-signin" method="POST" action="login" >
         <fieldset>
     
             <!-- Form Name -->
@@ -60,7 +80,8 @@
     
         
             <!-- Text input-->
-            <div class="form-group">
+            <div class="form-group ${error != null ? 'has-error' : ''}">
+            	<span>${message}</span>
                 <label class="col-md-4 control-label" for="nameimput">Name</label>
                 <div class="col-md-4">
                     <input id="nameinput" name="nameinput" type="text" placeholder="username" class="form-control input-md">

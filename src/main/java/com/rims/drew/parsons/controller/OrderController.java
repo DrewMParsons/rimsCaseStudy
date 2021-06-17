@@ -15,7 +15,7 @@ import com.rims.drew.parsons.entity.OrderItem;
 import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.service.MenuItemService;
 import com.rims.drew.parsons.service.OrderItemService;
-import com.rims.drew.parsons.service.UserService;
+import com.rims.drew.parsons.service.UserServiceImpl;
 
 @Controller
 @RequestMapping("/order")
@@ -25,7 +25,7 @@ public class OrderController
 	private MenuItemService menuItemService;
 	
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 	
 	@Autowired
 	private OrderItemService orderItemService;
