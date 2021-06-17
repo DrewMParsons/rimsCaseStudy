@@ -20,8 +20,6 @@ import com.rims.drew.parsons.repository.MenuItemRepository;
 @AutoConfigureTestDatabase(replace= Replace.NONE)
 public class MenuItemTest
 {
-	@Autowired
-	private TestEntityManager entityManager;
 	
 	@Autowired
 	private MenuItemRepository menuItemRepo;
