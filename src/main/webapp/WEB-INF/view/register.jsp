@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,95 +53,109 @@
                 </div>
             </nav>
         </section>
-    <form class="form-horizontal" id="registerForm" action="#">
-        <fieldset>
+        <div class="container">
+    		<form:form method="POST" modelAttribute="userForm" class="form-horizontal" id="registerForm">
+        		<fieldset>
     
-            <!-- Form Name -->
-            <legend>Register</legend>
+            	<!-- Form Name -->
+            	<legend>Register</legend>
     
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="emailinput">Email</label>
-                <div class="col-md-4">
-                    <input id="emailinput" name="emailinput" type="text" placeholder="name@email.com"
-                        class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
+            	
+            	<spring:bind path="email">
+		            <div class="form-group ${status.error ? 'has-error' : ''}">
+		                <label class="col-md-4 control-label" for="emailinput">Email</label>
+		                <div class="col-md-4">
+		                    <form:input id="emailinput" path="email" type="text" placeholder="name@email.com"
+		                        class="form-control input-md"></form:input>
+		                    <form:errors path="email"></form:errors>
+		                </div>
+		            </div>
+	            </spring:bind>
+	    
+	            <spring:bind path="username">
+		            <div class="form-group ${status.error ? 'has-error' : ''}">
+		                <label class="col-md-4 control-label" for="usernameimput">UserName</label>
+		                <div class="col-md-4">
+		                    <form:input id="usernameinput" path="username" type="text" placeholder="username" 
+		                    class="form-control input-md"></form:input>
+		                    <form:errors path="username"></form:errors>
+		                </div>
+		            </div>
+	            </spring:bind>
+				<spring:bind path="firstName">
+		            <div class="form-group ${status.error ? 'has-error' : ''}">
+		                <label class="col-md-4 control-label" for="firstnameinput">First Name</label>
+		                <div class="col-md-4">
+		                    <form:input id="firstnameinput" path="firstName" type="text" placeholder="first name" 
+		                    class="form-control input-md"></form:input>
+		                    <form:errors path="firstName"></form:errors>
+		                </div>
+		            </div>
+	            </spring:bind>
+				<spring:bind path="lastName">
+		            <div class="form-group ${status.error ? 'has-error' : ''}">
+		                <label class="col-md-4 control-label" for="lastnameinput">Last Name</label>
+		                <div class="col-md-4">
+		                    <form:input id="lastnameinput" path="lastName" type="text" placeholder="last name" 
+		                    class="form-control input-md"></form:input>
+		                    <form:errors path="lastName"></form:errors>
+		                </div>
+		            </div>
+	            </spring:bind>
+	    
+	            <!-- Password input-->
+	            <spring:bind path="password">
+		            <div class="form-group ${status.error ? 'has-error' : ''}">
+		                <label class="col-md-4 control-label" for="passwordinput">Password</label>
+		                <div class="col-md-4">
+		                    <form:input id="passwordinput" path="password" type="password" placeholder="######"
+		                        class="form-control input-md"></form:input>
+		                    <form:errors path="password"></form:errors>
+		                </div>
+		            </div>
+	            </spring:bind>
+	            <!-- Password input-->
+	            <spring:bind path="passwordConfirm">
+		            <div class="form-group ${status.error ? 'has-error' : ''}">
+		                <label class="col-md-4 control-label" for="passwordinputconfirm">Re-Enter Password</label>
+		                <div class="col-md-4">
+		                    <form:input id="passwordinputconfirm" path="passwordConfirm" type="password" placeholder="######"
+		                        class="form-control input-md"></form:input>
+		                    <form:errors path="passwordConfirm"></form:errors>
+		                </div>
+		            </div>
+	            </spring:bind>
+	            <!-- ADMIN Toggle -->
+	            <div class="form-group">
+	                <label class="col-md-4 control-label" for="custom-switch">Admin settings</label>
+	                <div class="col-md-4 form-check form-switch">
+	                    <input class="form-toggle-input" type="checkbox" id="admincheckbox">
+	                    <label class="form-check-label" for="admincheckbox">Check to register as Admin</label>
+	                </div>  
+	            </div>
+	            <!-- ADMIN Password input-->
+	            <div class="form-group" id="admininputs">
+	                <label class="col-md-4 control-label" for="adminpasswordinput">Enter Admin Password</label>
+	                <div class="col-md-4">
+	                    <input id="adminpasswordinput" name="adminpasswordinput" type="password" placeholder="######"
+	                        class="form-control input-md">
+	                    <span class="help-block">help</span>
+	                </div>
+	            </div>
+	            
+	    
+	            <!-- Button (Double) -->
+	            <div class="form-group">
+	                <label class="col-md-4 control-label" for="button1id">Submit</label>
+	                <div class="col-md-8">
+	                    <button id="button1id" name="button1id" class="btn btn-dark" type="submit">Register</button>
+	                    <button id="button2id" name="button2id" class="btn btn-dark">Cancel</button>
+	                </div>
+	            </div>
     
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="usernameimput">UserName</label>
-                <div class="col-md-4">
-                    <input id="usernameinput" name="usernameinput" type="text" placeholder="username" class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="firstnameimput">First Name</label>
-                <div class="col-md-4">
-                    <input id="firstnameinput" name="firstnameinput" type="text" placeholder="first name" class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="lastnameimput">Last Name</label>
-                <div class="col-md-4">
-                    <input id="lastnameinput" name="lastnameinput" type="text" placeholder="last name" class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
-    
-            <!-- Password input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="passwordinput">Password</label>
-                <div class="col-md-4">
-                    <input id="passwordinput1" name="passwordinput" type="password" placeholder="######"
-                        class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
-            <!-- Password input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="passwordinput2">Re-Enter Password</label>
-                <div class="col-md-4">
-                    <input id="passwordinput2" name="passwordinput" type="password" placeholder="######"
-                        class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
-            <!-- ADMIN Toggle -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="custom-switch">Admin settings</label>
-                <div class="col-md-4 form-check form-switch">
-                    <input class="form-toggle-input" type="checkbox" id="admincheckbox">
-                    <label class="form-check-label" for="admincheckbox">Check to register as Admin</label>
-                </div>  
-            </div>
-            <!-- ADMIN Password input-->
-            <div class="form-group" id="admininputs">
-                <label class="col-md-4 control-label" for="adminpasswordinput">Enter Admin Password</label>
-                <div class="col-md-4">
-                    <input id="adminpasswordinput" name="adminpasswordinput" type="password" placeholder="######"
-                        class="form-control input-md">
-                    <span class="help-block">help</span>
-                </div>
-            </div>
-            
-    
-            <!-- Button (Double) -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="button1id">Submit</label>
-                <div class="col-md-8">
-                    <button id="button1id" name="button1id" class="btn btn-dark" onclick="ValidateUser(document.getElementById('emailinput').value,document.getElementById('usernameinput').value,document.getElementById('passwordinput1').value,document.getElementById('passwordinput2').value)">Register</button>
-                    <button id="button2id" name="button2id" class="btn btn-dark">Cancel</button>
-                </div>
-            </div>
-    
-        </fieldset>
-    </form>
+        		</fieldset>
+    	</form:form>
+    	</div>
     <script src="/js/email-validation.js"></script>
 </body>
 </html>
