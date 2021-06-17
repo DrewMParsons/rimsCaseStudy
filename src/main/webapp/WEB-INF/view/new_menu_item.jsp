@@ -33,7 +33,7 @@
 	<section class="title"> 
 		<!-- NAVIGATION BAR --> 
 			<nav class="navbar navbar-expand-lg navbar-dark "> 
-				<a class="navbar-brand" href="/">RIMS</a>
+				<a class="navbar-brand" href="/logout">RIMS</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarToggler" aria-controls="navbarToggler"
 					aria-expanded="false" aria-label="Toggle navigation">

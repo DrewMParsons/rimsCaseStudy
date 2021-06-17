@@ -1,6 +1,9 @@
 package com.rims.drew.parsons.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,10 +31,13 @@ public class UserController
 	@GetMapping({"/","","/index"})
 	public String home()
 	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken))
+            return "order";
 		return "index";
 	}
 	
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login(Model model, String error, String logout) {
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
@@ -48,6 +54,7 @@ public class UserController
 		model.addAttribute("userForm", new User());
 		return "register";
 	}
+	
 	@PostMapping("/register")
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);

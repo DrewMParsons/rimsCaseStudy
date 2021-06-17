@@ -37,7 +37,7 @@
     <section class="title">
             <!-- NAVIGATION BAR -->
             <nav class="navbar navbar-expand-lg navbar-dark ">
-                <a class="navbar-brand" href="/">RIMS</a>
+                <a class="navbar-brand" href="/logout">RIMS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
                     aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -55,24 +55,9 @@
                 </div>
             </nav>
         </section>
-        <div class="container">
-      <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
-
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-        </div>
-      </form>
-    </div>
-    <form class="form-signin" method="POST" action="login" >
+       
+     
+    <form class="form-signin" method="POST" action="${contextPath}/login" >
         <fieldset>
     
             <!-- Form Name -->
@@ -84,8 +69,8 @@
             	<span>${message}</span>
                 <label class="col-md-4 control-label" for="nameimput">Name</label>
                 <div class="col-md-4">
-                    <input id="nameinput" name="nameinput" type="text" placeholder="username" class="form-control input-md">
-                    <span class="help-block">help</span>
+                    <input id="nameinput" name="username" type="text" placeholder="username" class="form-control input-md">
+                    <span>${error}</span>
                 </div>
             </div>
     
@@ -93,21 +78,23 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="passwordinput">Password</label>
                 <div class="col-md-4">
-                    <input id="passwordinput1" name="passwordinput" type="password" placeholder="######"
+                    <input id="passwordinput" name="password" type="password" placeholder="######"
                         class="form-control input-md">
-                    <span class="help-block">help</span>
+                    <span>${error}</span>
                 </div>
             </div>
            
     
             <!-- Button (Double) -->
             <div class="form-group">
+            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <label class="col-md-4 control-label" for="button1id">Submit</label>
                 <div class="col-md-8">
-                <a href="/login" role="button" class="btn btn-dark"><i
-                            class="bi bi-door-open-fill"></i>Login</a>
-                            <a href="/index" role="button" class="btn btn-dark"><i
-                            class="bi bi-arrow-left-circle"></i>Cancel</a>
+                <button class="btn btn-dark" type="submit"><i
+                            class="bi bi-door-open-fill"></i>Login</button>
+                      
+                            <a href="/register" role="button" class="btn btn-dark"><i
+                            class="bi bi-arrow-left-circle"></i>Register</a>
                     
                 </div>
             </div>
