@@ -53,7 +53,10 @@ public class OrderController
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addMenuItemToOrder(@ModelAttribute("orderItem")OrderItem orderItem, RedirectAttributes redirectAttributes) {
-		
+		if(orderItem.getQuantity()<1) {
+			redirectAttributes.addFlashAttribute("success","Item quantity must be greater than zero");
+			return "redirect:/order";
+		}
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userName =auth.getName();
 		User user = userService.findByUsername(userName);
