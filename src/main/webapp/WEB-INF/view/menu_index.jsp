@@ -84,8 +84,8 @@
             <td>${menuItem.description}</td>
             
             <td>
-            <a class="btn btn-info" role="button" href="menu/edit?id=${menuItem.id}"><i class="fas fa-edit"></i></a>
-            <a class="btn btn-info" role="button" href="menu/delete?id=${menuItem.id}"><i class="far fa-trash-alt"></i></a>
+            <a class="btn btn-info" role="button" title="EDIT" href="menu/edit?id=${menuItem.id}"><i class="fas fa-edit"></i></a>
+            <a class="btn btn-info" role="button" title="DELETE" href="menu/delete?id=${menuItem.id}"><i class="far fa-trash-alt"></i></a>
              
             </td>
         </tr>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
     Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,7 +57,7 @@
 	</section>
 	
 
-	<form:form class="form-horizontal" id="newMenuItemForm" action="save"
+	<form:form class="form-horizontal" id="newMenuItemForm" 
 		method="post" modelAttribute="menuItem">
 		<fieldset>
 
@@ -64,6 +65,7 @@
 			<h1>Edit Item: ${menuItem.title}</h1>
 
 			<!-- Text input-->
+			
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="idfield">ID</label>
 				<div class="col-md-4">
@@ -71,42 +73,49 @@
 						readonly="true" value="${menuItem.id}" />
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="titleinput">Title</label>
-				<div class="col-md-4">
-					<form:input id="titleinput" path="title" type="text"
-						placeholder="menu item title" class="form-control input-md" />
-
+			<spring:bind path="title">
+				<div class="form-group ${status.error ? 'has-error' : ''}">
+					<label class="col-md-4 control-label" for="titleinput">Title</label>
+					<div class="col-md-4">
+						<form:input id="titleinput" path="title" type="text"
+							placeholder="menu item title" class="form-control input-md" />
+						<form:errors path="title"></form:errors>
+					</div>
 				</div>
-			</div>
+			</spring:bind>
 
 			<!-- Text input-->
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="priceinput">Price</label>
-				<div class="col-md-4">
-					<form:input id="priceinput" path="price" type="text"
-						placeholder="00.00" class="form-control input-md" />
+			<spring:bind path="price">
+				<div class="form-group ${status.error ? 'has-error' : ''}">
+					<label class="col-md-4 control-label" for="priceinput">Price</label>
+					<div class="col-md-4">
+						<form:input id="priceinput" path="price" type="text"
+							placeholder="00.00" class="form-control input-md" />
+							<form:errors path="price"></form:errors>
+					</div>
 				</div>
-			</div>
+				</spring:bind>
 			
 
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="descriptioninput">Description</label>
-				<div class="col-md-4">
-					<form:input id="descriptioninput" path="description" type="text"
-						placeholder="brief description of menu item"
-						class="form-control input-md" />
+			<spring:bind path="description">
+				<div class="form-group ${status.error ? 'has-error' : ''}">
+					<label class="col-md-4 control-label" for="descriptioninput">Description</label>
+					<div class="col-md-4">
+						<form:input id="descriptioninput" path="description" type="text"
+							placeholder="brief description of menu item"
+							class="form-control input-md" />
+							<form:errors path="description"></form:errors>
+					</div>
 				</div>
-			</div>
+			</spring:bind>
 
 			<!-- Button (Double) -->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="button1id">Submit</label>
 				<div class="col-md-8">
 					<button id="button1id" name="button1id" class="btn btn-dark"
-						type="submit" value="save">Save</button>
-					<button type="button" id="button2id" name="button2id"
-						class="btn btn-dark" onclick="window.history.back();">Cancel</button>
+						type="submit">Save</button>
+					<a class="btn btn-dark" title="CANCEL" role="button" href="/menu">Cancel</a>
 				</div>
 			</div>
 

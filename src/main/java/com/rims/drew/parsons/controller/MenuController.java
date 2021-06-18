@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class MenuController
 		return "menu_index";
 	}
 	
-	@RequestMapping("/new")
+	@GetMapping("/new")
 	public String newMenuItem(Model model, Map<String,Object> mapModel) {
 		MenuItem menuItem = new MenuItem();
 		model.addAttribute("menuItem",menuItem);
@@ -67,6 +68,17 @@ public class MenuController
 		MenuItem menuItem = menuItemService.get(id);
 		mav.addObject("menuItem", menuItem);
 		return mav;	
+	}
+	
+	@PostMapping("/edit")
+	public String updateMenuItem(@ModelAttribute("menuItem")MenuItem menuItem,BindingResult bindingResult) {
+		menuItemValidator.validate(menuItem, bindingResult);
+		
+		 if (bindingResult.hasErrors()) {
+	            return "edit_menu_item";
+	        }
+		menuItemService.save(menuItem);
+		return "redirect:/menu";
 	}
 	
 	@RequestMapping("/delete")
