@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.service.MenuItemService;
+import com.rims.drew.parsons.validator.EditMenuItemValidator;
 import com.rims.drew.parsons.validator.MenuItemValidator;
 
 @Controller
@@ -30,6 +31,8 @@ public class MenuController
 	@Autowired
 	private MenuItemValidator menuItemValidator;
 	
+	@Autowired
+	private EditMenuItemValidator editMenuItemValidator;
 	private List<MenuItem> menuItemList;
 	
 	@RequestMapping
@@ -72,7 +75,7 @@ public class MenuController
 	
 	@PostMapping("/edit")
 	public String updateMenuItem(@ModelAttribute("menuItem")MenuItem menuItem,BindingResult bindingResult) {
-		menuItemValidator.validate(menuItem, bindingResult);
+		editMenuItemValidator.validate(menuItem, bindingResult);
 		
 		 if (bindingResult.hasErrors()) {
 	            return "edit_menu_item";

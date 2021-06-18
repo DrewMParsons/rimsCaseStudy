@@ -10,7 +10,7 @@ import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.service.MenuItemService;
 
 @Component
-public class MenuItemValidator implements Validator
+public class EditMenuItemValidator implements Validator
 {
 	@Autowired
 	MenuItemService menuItemService;
@@ -28,9 +28,7 @@ public class MenuItemValidator implements Validator
 		MenuItem menuItem = (MenuItem) target;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty");
-		 if (menuItemService.findByTitle(menuItem.getTitle()) != null) {
-	            errors.rejectValue("title", "Duplicate.menuItemForm.title");
-	        }
+		 
 		
 		if (menuItem.getPrice() == null || menuItem.getPrice().equals(null))
 		{

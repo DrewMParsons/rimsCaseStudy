@@ -73,8 +73,8 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-md-4 control-label" for="priceinput">Price</label>
 				<div class="col-md-4">
-					<form:input id="priceinput" path="price" type="text"
-						placeholder="00.00" class="form-control input-md" /> 
+					<form:input id="priceinput" path="price" type="number" step="0.01" min="1" max="1000"
+						class="form-control input-md" /> 
 						<form:errors path="price"></form:errors>
 				</div>
 			</div>

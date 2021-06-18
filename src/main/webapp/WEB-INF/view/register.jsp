@@ -65,7 +65,7 @@
 		            <div class="form-group ${status.error ? 'has-error' : ''}">
 		                <label class="col-md-4 control-label" for="emailinput">Email</label>
 		                <div class="col-md-4">
-		                    <form:input id="emailinput" path="email" type="text" placeholder="name@email.com"
+		                    <form:input id="emailinput" path="email" type="email" placeholder="name@email.com"
 		                        class="form-control input-md"></form:input>
 		                    <form:errors path="email"></form:errors>
 		                </div>
