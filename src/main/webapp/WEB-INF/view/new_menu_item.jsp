@@ -23,7 +23,12 @@
 	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 	
 <link rel="stylesheet" href="/css/main.css">
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
@@ -31,25 +36,25 @@
 <title>New Menu Item</title>
 </head>
 <body>
-	<section class="title"> 
-		<!-- NAVIGATION BAR --> 
-			<nav class="navbar navbar-expand-lg navbar-dark "> 
-				<a class="navbar-brand" href="/logout">RIMS</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarToggler" aria-controls="navbarToggler"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarToggler">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
-						<li class="active nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
-						<li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
-					</ul>
-				</div>
-			</nav> 
-		</section>
-	
+<section class="title"> 
+	<!-- NAVIGATION BAR --> 
+		<nav class="navbar navbar-expand-lg navbar-dark "> 
+			<a class="navbar-brand" href="/logout">RIMS</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarToggler" aria-controls="navbarToggler"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarToggler">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
+					<li class="active nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
+					<li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+				</ul>
+			</div>
+		</nav> 
+	</section>
+	<section id = "form">	
 	<form:form class="form-horizontal" id="newMenuItemForm" method="POST" modelAttribute="menuItem">
 		<fieldset>
 
@@ -103,6 +108,7 @@
 
 		</fieldset>
 	</form:form>
+	</section>
 	<!-- Footer -->
 	<div id="footer">
 		<i class="social-icon bi bi-twitter"></i> <i
