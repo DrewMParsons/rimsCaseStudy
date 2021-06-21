@@ -1,5 +1,12 @@
 package com.rims.drew.parsons.util;
 
+/**
+ * Class contains custom String Constants
+ * 
+ * @author Drew
+ *
+ */
+
 public class Constants
 {
 	/*

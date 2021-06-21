@@ -8,7 +8,14 @@ import org.springframework.validation.Validator;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.service.MenuItemService;
-
+/**
+ * Custom Validator class for Menu Items
+ * 
+ * This class handles all form validation for editing Menu Items
+ * similar to MenuItemValidator, except duplicate titles are allowed
+ * custom error messages are found in validation.properties in the resources folder 
+ * 
+ */
 @Component
 public class EditMenuItemValidator implements Validator
 {

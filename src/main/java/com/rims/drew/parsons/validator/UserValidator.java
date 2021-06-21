@@ -9,7 +9,12 @@ import org.springframework.validation.Validator;
 import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.service.UserService;
 
-
+/**
+ * Custom Validator class for Users
+ * 
+ * This class handles all form validation for registering and loggin in Users to the site
+ * custom error messages are found in validation.properties in the resources folder 
+ */
 
 @Component
 public class UserValidator implements Validator {
