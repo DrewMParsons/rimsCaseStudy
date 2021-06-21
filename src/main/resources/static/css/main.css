@@ -259,3 +259,8 @@ legend{
 
 	}
 }
+
+@media all and (max-width:440px) {
+        .table tr {    display: table;  width:100%;    }               
+        .table td {    display: table-row; }           
+    }
