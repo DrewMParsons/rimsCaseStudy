@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.service.SecurityService;
 import com.rims.drew.parsons.service.UserService;
+import com.rims.drew.parsons.util.Constants;
 import com.rims.drew.parsons.validator.UserValidator;
 
 
@@ -34,7 +35,7 @@ public class UserController
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken))
             return "redirect:/order";
-		return "index";
+		return Constants.INDEX;
 	}
 	
 	@GetMapping("/login")
@@ -45,14 +46,14 @@ public class UserController
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "login";
+        return Constants.LOGIN_PAGE;
     }
 	
 	@GetMapping("/register")
 	public String register(Model model)
 	{
 		model.addAttribute("userForm", new User());
-		return "register";
+		return Constants.REGISTER_PAGE;
 	}
 	
 	@PostMapping("/register")
@@ -60,7 +61,7 @@ public class UserController
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "register";
+            return Constants.REGISTER_PAGE;
         }
 
         userService.save(userForm);

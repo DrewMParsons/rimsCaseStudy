@@ -1,6 +1,7 @@
 /**
  * Script used to update the calculated Total on the order summary when the quantity is changed.DOES NOT UPDATE ON THE DB!
  */
+ const SALES_TAX = .06;
 $(document).ready(function(){
 	updateTotal();
 	
@@ -12,7 +13,7 @@ function updateTotal(){
 		total = total + parseFloat(element.innerHTML)
 	});
 	$("#total").text(total);
-	totalWithTax = Math.round((total +(total*0.06)+Number.EPSILON)*100)/100;
+	totalWithTax = Math.round((total +(total*SALES_TAX)+Number.EPSILON)*100)/100;
 	$("#totalWithTax").text(totalWithTax);
 };
 

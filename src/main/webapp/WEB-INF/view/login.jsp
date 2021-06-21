@@ -92,8 +92,8 @@
                 <div class="col-md-8">
                 <button class="btn btn-dark" type="submit"><i
                             class="bi bi-door-open-fill"></i>Login</button>
-                      
-                            <a href="/register" role="button" class="btn btn-dark"><i
+                <a id="button2id"  role="button"  class="btn btn-dark" href="/index">Cancel</a>   
+                <a href="/register" role="button" class="btn btn-dark"><i
                             class="bi bi-arrow-left-circle"></i>Register</a>
                     
                 </div>

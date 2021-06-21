@@ -149,7 +149,7 @@
 	                <label class="col-md-4 control-label" for="button1id">Submit</label>
 	                <div class="col-md-8">
 	                    <button id="button1id" name="button1id" class="btn btn-dark" type="submit">Register</button>
-	                    <button id="button2id" name="button2id" class="btn btn-dark">Cancel</button>
+	                    <a id="button2id" role="button"  class="btn btn-dark" href="/index">Cancel</a>
 	                </div>
 	            </div>
     

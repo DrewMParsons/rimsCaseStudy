@@ -7,13 +7,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.rims.drew.parsons.entity.MenuItem;
+import com.rims.drew.parsons.util.Constants;
 
 @Repository
 public interface MenuItemRepository extends CrudRepository<MenuItem, Long>
 {
 
-	@Query(value= "SELECT m FROM MenuItem m WHERE m.title LIKE '%' || :keyword || '%'"
-			+ "OR m.description LIKE '%' || :keyword || '%'")
+	@Query(value= Constants.SEARCH_QUERY)
 	List<MenuItem> search(String keyword);
 
 	MenuItem findByTitle(String title);

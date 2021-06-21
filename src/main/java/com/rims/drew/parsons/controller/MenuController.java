@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.service.MenuItemService;
+import com.rims.drew.parsons.util.Constants;
 import com.rims.drew.parsons.validator.EditMenuItemValidator;
 import com.rims.drew.parsons.validator.MenuItemValidator;
 
@@ -42,7 +43,7 @@ public class MenuController
 		model.addAttribute("keyword",keyword);
 	
 		
-		return "menu_index";
+		return Constants.MENU_PAGE;
 	}
 	
 	@GetMapping("/new")
@@ -50,7 +51,7 @@ public class MenuController
 		MenuItem menuItem = new MenuItem();
 		model.addAttribute("menuItem",menuItem);
 		//mapModel.put("menuItem",menuItem);
-		return "new_menu_item";
+		return Constants.NEW_MENU_ITEM_PAGE;
 	}
 	
 	//@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -59,7 +60,7 @@ public class MenuController
 		menuItemValidator.validate(menuItem, bindingResult);
 		
 		 if (bindingResult.hasErrors()) {
-	            return "new_menu_item";
+	            return Constants.NEW_MENU_ITEM_PAGE;
 	        }
 		menuItemService.save(menuItem);
 		return "redirect:/menu";
@@ -67,7 +68,7 @@ public class MenuController
 	
 	@RequestMapping("/edit")
 	public ModelAndView editMenuItem(@RequestParam long id) {
-		ModelAndView mav = new ModelAndView("edit_menu_item");
+		ModelAndView mav = new ModelAndView(Constants.EDIT_MENU_ITEM_PAGE);
 		MenuItem menuItem = menuItemService.get(id);
 		mav.addObject("menuItem", menuItem);
 		return mav;	
@@ -78,7 +79,7 @@ public class MenuController
 		editMenuItemValidator.validate(menuItem, bindingResult);
 		
 		 if (bindingResult.hasErrors()) {
-	            return "edit_menu_item";
+	            return Constants.EDIT_MENU_ITEM_PAGE;
 	        }
 		menuItemService.save(menuItem);
 		return "redirect:/menu";
@@ -94,7 +95,7 @@ public class MenuController
     public ModelAndView search(@RequestParam String keyword) {
 		menuItemList = menuItemService.search(keyword);
 	
-		ModelAndView mav = new ModelAndView("menu_index");
+		ModelAndView mav = new ModelAndView(Constants.MENU_PAGE);
 		mav.addObject("listMenuItems",menuItemList);
 		return mav; 
     }

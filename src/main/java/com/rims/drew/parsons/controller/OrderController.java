@@ -18,6 +18,7 @@ import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.service.MenuItemService;
 import com.rims.drew.parsons.service.OrderItemService;
 import com.rims.drew.parsons.service.UserServiceImpl;
+import com.rims.drew.parsons.util.Constants;
 
 @Controller
 @RequestMapping("/order")
@@ -48,7 +49,7 @@ public class OrderController
 		model.addAttribute("orderItem",orderItem);
 		model.addAttribute("user",user);
 		
-		return "order";
+		return Constants.ORDER_PAGE;
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -76,7 +77,7 @@ public class OrderController
 		User user = userService.findByUsername(userName);
 		List<OrderItem> orderItems = orderItemService.listOrderItems(user);
 		model.addAttribute("listOrderItems", orderItems);
-		return "order_details";
+		return Constants.ORDER_DETAIL_PAGE;
 	}
 	
 	@RequestMapping("/delete")
@@ -89,7 +90,7 @@ public class OrderController
 	@RequestMapping("/ordercomplete")
 	public String completeOrder() {
 		
-		return "order_complete";
+		return Constants.ORDER_COMPLETE_PAGE;
 	}
 
 }
