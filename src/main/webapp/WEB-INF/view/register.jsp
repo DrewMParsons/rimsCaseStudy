@@ -129,7 +129,7 @@
 	            <div class="form-group">
 	                <label class="col-md-4 control-label" for="custom-switch">Admin settings</label>
 	                <div class="col-md-4 form-check form-switch">
-	                    <input class="form-toggle-input" type="checkbox" id="admincheckbox">
+	                    <form:checkbox class="form-toggle-input" path="admin" id="admincheckbox"></form:checkbox>
 	                    <label class="form-check-label" for="admincheckbox">Check to register as Admin</label>
 	                </div>  
 	            </div>

@@ -37,6 +37,9 @@ public class User
 
     @Transient
     private String passwordConfirm;
+    
+    @Transient
+    private boolean admin = false;
 
     @ManyToMany
     private Set<Role> roles;
@@ -122,6 +125,17 @@ public class User
     public void addRole(Role role) {
     	this.roles.add(role);
     }
+
+	public boolean isAdmin()
+	{
+		return admin;
+	}
+
+	public void setAdmin(boolean isAdmin)
+	{
+		this.admin = isAdmin;
+	}
+    
     
     
     

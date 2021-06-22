@@ -26,6 +26,8 @@ import com.rims.drew.parsons.repository.UserRepository;
 public class UserServiceImpl implements UserService
 {
 	public static final long USER_ROLE_ID = 2;
+	public static final long ADMIN_ROLE_ID = 1;
+	
 	@Autowired
     private UserRepository userRepository;
 	@Autowired
@@ -44,6 +46,7 @@ public class UserServiceImpl implements UserService
        // user.setRoles(new HashSet<>(roleRepository.findAll()));
         user.setRoles(new HashSet<>());
         user.addRole(roleRepository.findById(USER_ROLE_ID).get());
+        if(user.isAdmin()) {user.addRole(roleRepository.findById(ADMIN_ROLE_ID).get());}
         userRepository.save(user);
     }
 
