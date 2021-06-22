@@ -18,6 +18,8 @@ import com.rims.drew.parsons.service.UserService;
 
 @Component
 public class UserValidator implements Validator {
+	
+	private static final String ADMIN_PASSWORD= "iamanadmin";
     
 	@Autowired
     private UserService userService;
@@ -53,6 +55,11 @@ public class UserValidator implements Validator {
 
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+        }
+        if(user.isAdmin()) {
+        	if(!user.getAdminPassword().equals(ADMIN_PASSWORD)) {
+        		errors.rejectValue("adminPassword", "Diff.userForm.adminPassword");
+        	}
         }
     }
 }

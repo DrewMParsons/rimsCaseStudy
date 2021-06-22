@@ -40,6 +40,9 @@ public class User
     
     @Transient
     private boolean admin = false;
+    
+    @Transient
+    private String adminPassword;
 
     @ManyToMany
     private Set<Role> roles;
@@ -135,6 +138,18 @@ public class User
 	{
 		this.admin = isAdmin;
 	}
+
+	public String getAdminPassword()
+	{
+		return adminPassword;
+	}
+
+	public void setAdminPassword(String adminPassword)
+	{
+		this.adminPassword = adminPassword;
+	}
+	
+	
     
     
     

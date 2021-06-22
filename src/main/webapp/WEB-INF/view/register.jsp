@@ -126,22 +126,28 @@
 		            </div>
 	            </spring:bind>
 	            <!-- ADMIN Toggle -->
-	            <div class="form-group">
+	            <spring:bind path="admin">
+	            <div class="form-group ${status.error ? 'has-error' : ''}">
 	                <label class="col-md-4 control-label" for="custom-switch">Admin settings</label>
 	                <div class="col-md-4 form-check form-switch">
 	                    <form:checkbox class="form-toggle-input" path="admin" id="admincheckbox"></form:checkbox>
 	                    <label class="form-check-label" for="admincheckbox">Check to register as Admin</label>
+	                    <form:errors path="adminPassword"></form:errors>
 	                </div>  
 	            </div>
+	            </spring:bind>
 	            <!-- ADMIN Password input-->
-	            <div class="form-group" id="admininputs">
+	            <spring:bind path="adminPassword">
+	            <div class="form-group" id="admininputs" ${status.error ? 'has-error' : ''}>
 	                <label class="col-md-4 control-label" for="adminpasswordinput">Enter Admin Password</label>
 	                <div class="col-md-4">
-	                    <input id="adminpasswordinput" name="adminpasswordinput" type="password" placeholder="######"
-	                        class="form-control input-md">
-	                    <span class="help-block">help</span>
+	                    <form:input id="adminpasswordinput" path="adminPassword" type="password" placeholder="######"
+	                        class="form-control input-md"></form:input>
+	                        <form:errors path="adminPassword"></form:errors>
+	                    
 	                </div>
 	            </div>
+	            </spring:bind>
 	            
 	    
 	            <!-- Button (Double) -->
