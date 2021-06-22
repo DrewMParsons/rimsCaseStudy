@@ -20,7 +20,11 @@ import com.rims.drew.parsons.service.MenuItemService;
 import com.rims.drew.parsons.util.Constants;
 import com.rims.drew.parsons.validator.EditMenuItemValidator;
 import com.rims.drew.parsons.validator.MenuItemValidator;
-
+/**
+ * Custom controller for handling all reuqests relating to menu_items and the menu
+ * @author Drew
+ *
+ */
 @Controller
 @RequestMapping("/menu")
 public class MenuController
@@ -35,6 +39,10 @@ public class MenuController
 	private EditMenuItemValidator editMenuItemValidator;
 	private List<MenuItem> menuItemList;
 	
+	/*
+	 * Method for menu home page.  imports menu items from DB
+	 * also handles any search calls using the @Param keyword entered by the user
+	 */
 	@RequestMapping
 	public String home(Model model,@Param("keyword")String keyword) {
 		menuItemList = menuItemService.listAll(keyword);
@@ -45,15 +53,20 @@ public class MenuController
 		return Constants.MENU_PAGE;
 	}
 	
+	/*
+	 * Method for new menu item requests
+	 */
 	@GetMapping("/new")
 	public String newMenuItem(Model model, Map<String,Object> mapModel) {
 		MenuItem menuItem = new MenuItem();
 		model.addAttribute("menuItem",menuItem);
-		//mapModel.put("menuItem",menuItem);
+		
 		return Constants.NEW_MENU_ITEM_PAGE;
 	}
 	
-	
+	/*
+	 * Method for new menu item saves.  includes BindingResult to handle  errors
+	 */
 	@PostMapping("new")
 	public String saveMenuItem(@ModelAttribute("menuItem")MenuItem menuItem,BindingResult bindingResult) {
 		menuItemValidator.validate(menuItem, bindingResult);
@@ -64,7 +77,9 @@ public class MenuController
 		menuItemService.save(menuItem);
 		return "redirect:/menu";
 	}
-	
+	/*
+	 * Method to handle requests of editing of menu items
+	 */
 	@RequestMapping("/edit")
 	public ModelAndView editMenuItem(@RequestParam long id) {
 		ModelAndView mav = new ModelAndView(Constants.EDIT_MENU_ITEM_PAGE);
@@ -72,7 +87,9 @@ public class MenuController
 		mav.addObject("menuItem", menuItem);
 		return mav;	
 	}
-	
+	/*
+	 * Method to handle saving updated menu items. includes BindingResult to handle  errors
+	 */
 	@PostMapping("/edit")
 	public String updateMenuItem(@ModelAttribute("menuItem")MenuItem menuItem,BindingResult bindingResult) {
 		editMenuItemValidator.validate(menuItem, bindingResult);
@@ -84,12 +101,18 @@ public class MenuController
 		return "redirect:/menu";
 	}
 	
+	/*
+	 * Delete menu item request handler
+	 */
+	
 	@RequestMapping("/delete")
 	public String deleteMenuItem(@RequestParam long id) {
 		menuItemService.delete(id);
 		return "redirect:/menu";
 	}
-	
+	/*
+	 * Search request handler
+	 */
 	@RequestMapping("/search")
     public ModelAndView search(@RequestParam String keyword) {
 		menuItemList = menuItemService.search(keyword);

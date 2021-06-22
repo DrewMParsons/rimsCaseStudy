@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.rims.drew.parsons.entity.Role;
 import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.repository.UserRepository;
-
+/**
+ * Custom Service class used for the security auth
+ * 
+ *  
+ * @see UserRepository
+ *
+ * @author Drew
+ *
+ */
 @Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService
 {

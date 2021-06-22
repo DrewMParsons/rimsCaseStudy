@@ -10,8 +10,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import com.rims.drew.parsons.repository.MenuItemRepository;
+import com.rims.drew.parsons.repository.OrderItemRepository;
 
 
+/**
+ * Custom Service class used for the security auth
+ * 
+ * @see UserDetailsService
+ * @see AuthenticationManager
+ * @author Drew
+ *
+ */
 @Service
 public class SecurityServiceImpl implements SecurityService{
     @Autowired
@@ -22,6 +32,10 @@ public class SecurityServiceImpl implements SecurityService{
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
+    
+    /*
+     * @override method to return logged in authenticated user by username
+     */
     @Override
     public String findLoggedInUsername() {
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();

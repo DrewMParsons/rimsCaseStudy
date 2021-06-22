@@ -4,14 +4,23 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.entity.OrderItem;
 import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.repository.MenuItemRepository;
 import com.rims.drew.parsons.repository.OrderItemRepository;
-
+/**
+ * Custom Service class used for the order item table in the database
+ * 
+ * @see OrderItemRepository
+ * @see MenuItemRepository
+ * @author Drew
+ *
+ */
 @Service
+@Transactional
 public class OrderItemService
 {
 	@Autowired
@@ -39,8 +48,13 @@ public class OrderItemService
 		orderRepo.deleteById(id);
 	}
 	
+	/*
+	 * method to add an item to the current users order.  
+	 * If item is already in the order, will update to the new quantity
+	 */
 	public Integer addMenuItem(Long menuItemId,Integer quantity, User user) {
 		Integer addedQuantity = quantity;
+		
 		//if Order quantity is set to Zero, dont add anything to the order and return zero 
 		if(addedQuantity==0 || addedQuantity==null) return 0;
 		MenuItem menuItem = menuItemRepo.findById(menuItemId).get();

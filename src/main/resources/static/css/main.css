@@ -37,6 +37,8 @@
   --primary-text-color-light: var(--white-color);
   --primary-text-color-dark:var(--gray-light-color);
 }
+
+
 * {box-sizing: border-box;}
 
 html {
@@ -57,22 +59,25 @@ h1,h2,h3,label{
 
 h2{
 	font-size: 2.25rem;
-	color:var(--primary-accent-color);
+	color:var(--primary-accent-color); 
 }
 h3, label{
     color: var(--primary-color);
 }
+
 legend{
     margin-left: 1.5%;
     font-size: 3.5rem;
     color: var(--primary-accent-color)
 }
 
+
 /* Navigation Bar */
 .container-fluid{
     padding: 3% 3%;
     background-color: var(--primary-color-dark); 
 }
+
 .title{
     color: var(--primary-text-color-light);  
 }
@@ -104,6 +109,8 @@ legend{
     border-color: var(--primary-accent-color);
     box-shadow: inset 0 1px 1px var(--primary-accent-color-light), 0 0 8px var(--primary-accent-color);
 }
+
+
 /* Hero Section */
 .hero{
     background: url("../images/bar.jpg") center, var(--primary-color-dark); ;
@@ -153,6 +160,7 @@ legend{
     color:var(--primary-color);
     
 }
+
 /* Pricing */
 #pricing{
     padding: 3% 15%;
@@ -164,6 +172,7 @@ legend{
     padding: 3%;
     
 }
+
 /* Call to Action */
 #cta{
     padding: 5% 15%;
@@ -208,6 +217,7 @@ legend{
     color:var(--primary-text-color-light);
     
 }
+
 /* Button Dark Fill  */
 .btn-dark , .btn-secondary{
     
@@ -221,6 +231,7 @@ legend{
     color:var(--primary-text-color-light); 
 }
 
+
 /* Registration Form */
 .form-control:focus {
     border-color: var(--primary-accent-color);
@@ -229,7 +240,7 @@ legend{
 
 
 
-/*TODO:Footer IS NOT RESPONSIVE, TOO BIG, CUTS OFF BOTTOM OF SECTION IN SMALL SCREEN */
+
 /* Footer */
 #footer{
 
@@ -244,12 +255,15 @@ legend{
     
     
 }
+
 .social-icon{
     margin: 20px 10px;
     font-size: 1.5rem;
     }
+
     
-    /* Media Queries */
+/* Media Queries */
+
 @media (max-width: 1028px){
     .hero{
         text-align: center;

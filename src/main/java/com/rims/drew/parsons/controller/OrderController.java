@@ -19,7 +19,11 @@ import com.rims.drew.parsons.service.MenuItemService;
 import com.rims.drew.parsons.service.OrderItemService;
 import com.rims.drew.parsons.service.UserServiceImpl;
 import com.rims.drew.parsons.util.Constants;
-
+/**
+ * Custom controller for handling all requests related to orders
+ * @author Drew
+ *
+ */
 @Controller
 @RequestMapping("/order")
 public class OrderController
@@ -34,7 +38,10 @@ public class OrderController
 	private OrderItemService orderItemService;
 	
 	
-	
+	/*
+	 * Handles requests for the order page.  Inlcudes call to the DB for all menuitems, checks DB for user auth 
+	 * and details.  
+	 */
 	@RequestMapping()
 	public String order(Model model)
 	{
@@ -52,6 +59,12 @@ public class OrderController
 		return Constants.ORDER_PAGE;
 	}
 	
+	/*
+	 * Method call for adding an item to a users order. 
+	 * call to DB for user auth and to add item to users order 
+	 * Includes a check on quantity of zero
+	 * Success message is returned to the screen in case of item added or item quantity of zero
+	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addMenuItemToOrder(@ModelAttribute("orderItem")OrderItem orderItem, RedirectAttributes redirectAttributes) {
 		if(orderItem.getQuantity()<1) {
@@ -68,7 +81,9 @@ public class OrderController
 	
 	}
 	
-	
+	/*
+	 * Method for all requests to the order summary page.  Checks DB for user auth and users order items
+	 */
 	@RequestMapping("/orderdetails")
 	public String orderDetails(Model model) {
 		
@@ -79,14 +94,19 @@ public class OrderController
 		model.addAttribute("listOrderItems", orderItems);
 		return Constants.ORDER_DETAIL_PAGE;
 	}
-	
+	/*
+	 * handles calls to remove items from order summary
+	 */
 	@RequestMapping("/delete")
 	public String deleteOrderItem(@RequestParam long id) {
 		
 		orderItemService.delete(id);
 		return "redirect:/order/orderdetails";
 	}
-	
+	/*
+	 * handles calls to complete order, currently only returns success page for order
+	 * 
+	 */
 	@RequestMapping("/ordercomplete")
 	public String completeOrder() {
 		

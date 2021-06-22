@@ -11,7 +11,17 @@ import com.rims.drew.parsons.entity.User;
 import com.rims.drew.parsons.repository.RoleRepository;
 import com.rims.drew.parsons.repository.UserRepository;
 
-
+/**
+ * Custom Service class used for the user table in the database
+ * methods includes to save a user to the DB with an encrypted password,
+ * return a user by username, and return a user by ID
+ *  
+ * @see UserRepository
+ * @see RoleRepository
+ * @see BCryptPasswordEncoder
+ * @author Drew
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService
 {

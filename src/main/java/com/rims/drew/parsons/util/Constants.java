@@ -1,7 +1,7 @@
 package com.rims.drew.parsons.util;
 
 /**
- * Class contains custom String Constants
+ * Class contains custom String Constants used in Controllers and custom queries
  * 
  * @author Drew
  *

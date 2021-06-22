@@ -8,7 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.rims.drew.parsons.entity.MenuItem;
 import com.rims.drew.parsons.repository.MenuItemRepository;
-
+/**
+ * Custom Service class used for the menu item table in the database
+ * 
+ * 
+ * @see MenuItemRepository
+ * @author Drew
+ *
+ */
 @Service
 @Transactional
 public class MenuItemService
@@ -20,6 +27,10 @@ public class MenuItemService
 		menuItemRepo.save(menuItem);
 	}
 	
+	/*
+	 * method used to return list or menu items.includes parameter for keyword to be used in
+	 * search menuitems query
+	 */
 	public List<MenuItem> listAll(String keyword){
 		if(keyword ==null || keyword.isEmpty() || keyword.equals("")) {
 			return (List<MenuItem>) menuItemRepo.findAll();

@@ -13,7 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
+/**
+ * custom instantiation of the WebSecurityConfigurerAdapter abstract class.
+ * Class handles the authorization requests for users and http requests
+ * 
+ * @see UserDetailsService
+ * @see WebSecurityConfigurerAdapter
+ * @author Drew
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
