@@ -1,14 +1,16 @@
 package com.rims.drew.parsons.controller;
 
 
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+/**
+ * custom exception class for handling quantity errors in adding order items
+ * @author Drew
+ *
+ */
 public class OrderException extends RuntimeException
 {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String errorMessage;
 	private int quantity;

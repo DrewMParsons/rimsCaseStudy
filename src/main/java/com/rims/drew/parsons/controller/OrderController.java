@@ -65,30 +65,10 @@ public class OrderController
 	 * to add item to users order Includes a check on quantity of zero Success
 	 * message is returned to the screen in case of item added or item quantity of
 	 * zero
+	 * 
+	 * Throws custom error if quantity is less than one
 	 */
-//	@RequestMapping(value = "/add", method = RequestMethod.POST)
-//	public String addMenuItemToOrder(@ModelAttribute("orderItem") OrderItem orderItem,
-//			RedirectAttributes redirectAttributes)
-//	{
-//		
-//			int quantity = orderItem.getQuantity();
-//			if(quantity<1) {
-//				redirectAttributes.addFlashAttribute("success",
-//						"Quantity must be greater than "+ quantity);
-//				return "redirect:/order";
-//			}
-//		
-//			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//			String userName = auth.getName();
-//			User user = userService.findByUsername(userName);
-//			Integer addQuantity = orderItemService.addMenuItem(orderItem.getMenuItem().getId(), orderItem.getQuantity(),
-//					user);
-//			redirectAttributes.addFlashAttribute("success",
-//					addQuantity + " " + orderItem.getMenuItem().getTitle() + " added to order");
-//			return "redirect:/order";
-//			
-//		
-//	}
+
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addMenuItemToOrder(@ModelAttribute("orderItem") OrderItem orderItem,
