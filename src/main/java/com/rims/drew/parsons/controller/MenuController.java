@@ -44,6 +44,7 @@ public class MenuController
 	 * also handles any search calls using the @Param keyword entered by the user
 	 */
 	@RequestMapping
+
 	public String home(Model model,@Param("keyword")String keyword) {
 		menuItemList = menuItemService.listAll(keyword);
 		model.addAttribute("listMenuItems",menuItemList);

@@ -74,7 +74,7 @@
 	    
 	            <spring:bind path="username">
 		            <div class="form-group ${status.error ? 'has-error' : ''}">
-		                <label class="col-md-4 control-label" for="usernameimput">UserName</label>
+		                <label class="col-md-4 control-label" for="usernameinput">UserName</label>
 		                <div class="col-md-4">
 		                    <form:input id="usernameinput" path="username" type="text" placeholder="username" 
 		                    class="form-control input-md"></form:input>

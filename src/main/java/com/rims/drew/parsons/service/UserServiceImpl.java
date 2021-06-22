@@ -25,6 +25,7 @@ import com.rims.drew.parsons.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService
 {
+	public static final long USER_ROLE_ID = 2;
 	@Autowired
     private UserRepository userRepository;
 	@Autowired
@@ -40,7 +41,9 @@ public class UserServiceImpl implements UserService
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet<>(roleRepository.findAll()));
+       // user.setRoles(new HashSet<>(roleRepository.findAll()));
+        user.setRoles(new HashSet<>());
+        user.addRole(roleRepository.findById(USER_ROLE_ID).get());
         userRepository.save(user);
     }
 
