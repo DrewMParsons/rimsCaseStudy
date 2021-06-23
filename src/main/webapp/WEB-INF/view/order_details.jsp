@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
-
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
     Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,8 +41,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarToggler">
 				<ul class="navbar-nav ml-auto">
+					<s:authorize access="hasRole('ROLE_ADMIN')">
 					<li class="nav-item"><a class="nav-link" href="/menu">Menu</a></li>
 					<li class="nav-item"><a class="nav-link" href="/menu/new">New Item</a></li>
+					</s:authorize>
 					<li class="nav-item"><a class="nav-link" href="/order">Order Items</a></li>
 					<li class="active nav-item"><a class="nav-link" href="/order/orderdetails">Order Summary</a></li>
 				</ul>	
