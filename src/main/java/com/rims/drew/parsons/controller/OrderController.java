@@ -19,6 +19,7 @@ import com.rims.drew.parsons.service.MenuItemService;
 import com.rims.drew.parsons.service.OrderItemService;
 import com.rims.drew.parsons.service.UserServiceImpl;
 import com.rims.drew.parsons.util.Constants;
+import com.rims.drew.parsons.util.OrderException;
 
 /**
  * Custom controller for handling all requests related to orders

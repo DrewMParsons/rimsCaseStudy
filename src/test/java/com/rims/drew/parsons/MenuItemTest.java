@@ -1,10 +1,14 @@
 package com.rims.drew.parsons;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +64,39 @@ public class MenuItemTest
 		
 		assertEquals(editedMenuItem.getId(), savedMenuItem.getId());
 		assertNotEquals(editedMenuItem.getTitle(), "testEdit");
+		
+	}
+	
+	/*
+	 * @Test to see if menu item can be deleted using the repo save method
+	 * test is successful if menuItem is no longer present in the database
+	 */
+	@Test
+	public void testDeleteMenuItem() {
+		MenuItem menuItem = new MenuItem();
+		menuItem.setTitle("testEdit");
+		menuItem.setDescription("this is a test item for edit");
+		menuItem.setPrice(new BigDecimal(99.99));
+		
+		MenuItem savedMenuItem =menuItemRepo.save(menuItem);
+		
+		menuItemRepo.delete(savedMenuItem);
+		
+		assertFalse(menuItemRepo.findById(savedMenuItem.getId()).isPresent());
+	}
+	
+	@Test
+	public void testFindMenuItemById() {
+		MenuItem menuItem = new MenuItem();
+		menuItem.setTitle("testEdit");
+		menuItem.setDescription("this is a test item for edit");
+		menuItem.setPrice(new BigDecimal(99.99));
+		
+		MenuItem savedMenuItem =menuItemRepo.save(menuItem);
+		
+		MenuItem checkForSavedMenuItem =menuItemRepo.findById(savedMenuItem.getId()).get();
+		
+		assertEquals(savedMenuItem, checkForSavedMenuItem);
 		
 	}
 

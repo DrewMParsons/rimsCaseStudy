@@ -1,4 +1,4 @@
-package com.rims.drew.parsons.controller;
+package com.rims.drew.parsons.util;
 
 
 
