@@ -44,8 +44,8 @@ CREATE TABLE `user_roles` (
 	`roles_id` BIGINT(20) NOT NULL,
 	PRIMARY KEY (`users_id`, `roles_id`) USING BTREE,
 	INDEX `FKj9553ass9uctjrmh0gkqsmv0d` (`roles_id`) USING BTREE,
-	CONSTRAINT `FK7ecyobaa59vxkxckg6t355l86` FOREIGN KEY (`users_id`) REFERENCES `heroku_d30515df90454a9`.`user` (`id`) ON UPDATE RESTRICT ON DELETE RESTRICT,
-	CONSTRAINT `FKj9553ass9uctjrmh0gkqsmv0d` FOREIGN KEY (`roles_id`) REFERENCES `heroku_d30515df90454a9`.`role` (`id`) ON UPDATE RESTRICT ON DELETE RESTRICT
+	CONSTRAINT `FK7ecyobaa59vxkxckg6t355l86` FOREIGN KEY (`users_id`) REFERENCES `heroku_d30515df90454a9`.`user` (`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT `FKj9553ass9uctjrmh0gkqsmv0d` FOREIGN KEY (`roles_id`) REFERENCES `heroku_d30515df90454a9`.`role` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
